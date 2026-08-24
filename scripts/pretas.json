@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "text": "É uma pena que as crianças de hoje em dia estão mexendo com _____.",
+    "pick": 1
+  },
+  {
+    "id": 2,
+    "text": "_____ era meu maior medo quando era criança.",
+    "pick": 1
+  },
+  {
+    "id": 3,
+    "text": "Em 1000 anos, o dinheiro será extinto e _____ será nossa moeda.",
+    "pick": 1
+  },
+  {
+    "id": 4,
+    "text": "O que eu trouxe do Paraguai?",
+    "pick": 1
+  },
+  {
+    "id": 5,
+    "text": "Desculpa prof, não fiz a tarefa de casa por causa de _____ _____.",
+    "pick": 2
+  },
+  {
+    "id": 6,
+    "text": "Enquanto EUA competia na corrida espacial, o BR investia em _____.",
+    "pick": 1
+  },
+  {
+    "id": 7,
+    "text": "Qual meu poder secreto?",
+    "pick": 1
+  },
+  {
+    "id": 8,
+    "text": "E quando faraó nada fez, Moisés invocou dos céus a praga _____.",
+    "pick": 1
+  },
+  {
+    "id": 9,
+    "text": "Dizem que, no Garavelo, se troca 3 maços de cigarro por _____.",
+    "pick": 1
+  },
+  {
+    "id": 10,
+    "text": "No próximo Natal, Papai Noel vai dar _____ para as crianças levadas.",
+    "pick": 1
+  },
+  {
+    "id": 11,
+    "text": "A vida do indígena mudou para sempre quando Portugal lhe apresentou _____ _____.",
+    "pick": 2
+  },
+  {
+    "id": 12,
+    "text": "Em seus momentos finais, Michael Jackson pensou em _____.",
+    "pick": 1
+  },
+  {
+    "id": 13,
+    "text": "Por que estou todo doído? Dr. Drauzio me",
+    "pick": 1
+  },
+  {
+    "id": 14,
+    "text": "O que eu levaria ao passado para convencer as pessoas que sou um mago poderoso? O que fica melhor",
+    "pick": 1
+  },
+  {
+    "id": 15,
+    "text": "O Passeio da Escola foi um fiasco devido a _____. _____",
+    "pick": 2
+  },
+  {
+    "id": 16,
+    "text": "_____ é o melhor amigo de uma garota. Quando eu for",
+    "pick": 1
+  },
+  {
+    "id": 17,
+    "text": "receitou uma dose de _____.",
+    "pick": 1
+  },
+  {
+    "id": 18,
+    "text": "quando envelhece?",
+    "pick": 1
+  },
+  {
+    "id": 19,
+    "text": "tem sido meu remédio!",
+    "pick": 1
+  },
+  {
+    "id": 20,
+    "text": "o presidente, criarei o Ministério de _____.",
+    "pick": 1
+  },
+  {
+    "id": 21,
+    "text": "O que meus pais estão escondendo de mim?",
+    "pick": 1
+  },
+  {
+    "id": 22,
+    "text": "_____ deixa qualquer festa animada.",
+    "pick": 1
+  },
+  {
+    "id": 23,
+    "text": "Novo reality da MTV apresenta subcelebs obrigadas a conviver com _____.",
+    "pick": 1
+  },
+  {
+    "id": 24,
+    "text": "Durante o sexo, gosto de pensar em _____.",
+    "pick": 1
+  },
+  {
+    "id": 25,
+    "text": "_____, é assim que espero morrer.",
+    "pick": 1
+  },
+  {
+    "id": 26,
+    "text": "_____ é o que me mantém de pé.",
+    "pick": 1
+  },
+  {
+    "id": 27,
+    "text": "Meu fetiche secreto é _____.",
+    "pick": 1
+  },
+  {
+    "id": 28,
+    "text": "O que vovó acha pertubante e estranhamente charmoso?",
+    "pick": 1
+  },
+  {
+    "id": 29,
+    "text": "Qual o próximo brinde do Mc Lanche Feliz?",
+    "pick": 1
+  },
+  {
+    "id": 30,
+    "text": "O que é tiro-e- queda para se conseguir sexo?",
+    "pick": 1
+  },
+  {
+    "id": 31,
+    "text": "_____, testado pelas crianças, aprovado pelas mães.",
+    "pick": 1
+  },
+  {
+    "id": 32,
+    "text": "Por que não consigo dormir à noite?",
+    "pick": 1
+  },
+  {
+    "id": 33,
+    "text": "Qual o motivo da minha loucura? Qual a próxima",
+    "pick": 1
+  },
+  {
+    "id": 34,
+    "text": "Antropólogos descobriram recentemente uma tribo que cutuava _____. Bebo para",
+    "pick": 1
+  },
+  {
+    "id": 35,
+    "text": "Que cheiro é esse? E o prêmio",
+    "pick": 1
+  },
+  {
+    "id": 36,
+    "text": "O que faz Jair Bolsonaro descansar após um longo dia de trabalho? E para meu",
+    "pick": 1
+  },
+  {
+    "id": 37,
+    "text": "dupla Super- herói e ajudante?",
+    "pick": 1
+  },
+  {
+    "id": 38,
+    "text": "esquecer _____.",
+    "pick": 1
+  },
+  {
+    "id": 39,
+    "text": "_____ vai para _____.",
+    "pick": 2
+  },
+  {
+    "id": 40,
+    "text": "próximo número, tirarei _____ de _____.",
+    "pick": 2
+  },
+  {
+    "id": 41,
+    "text": "Até que eu gosto do meu chefe... O problema dele é só _____.",
+    "pick": 1
+  },
+  {
+    "id": 42,
+    "text": "_____ + _____ = _____",
+    "pick": 3
+  },
+  {
+    "id": 43,
+    "text": "Dizem as más línguas que o prato favorito de Vladimir Putin é _____ rechado com _____.",
+    "pick": 2
+  },
+  {
+    "id": 44,
+    "text": "Sim, eu matei _____. Como? _____.",
+    "pick": 2
+  },
+  {
+    "id": 45,
+    "text": "_____ é uma ladeira escorregadia que leva direto para _____.",
+    "pick": 2
+  },
+  {
+    "id": 46,
+    "text": "De fato eu nunca entendi _____ até encontrar _____.",
+    "pick": 2
+  },
+  {
+    "id": 47,
+    "text": "_____ sem _____ é só _____.",
+    "pick": 3
+  },
+  {
+    "id": 48,
+    "text": "Globo Filmes apresenta: _____, a história de _____.",
+    "pick": 2
+  },
+  {
+    "id": 49,
+    "text": "Como eu perdi a minha virgindade?",
+    "pick": 1
+  },
+  {
+    "id": 50,
+    "text": "A Medicina alternativa agora estuda o potencial curativo de _____.",
+    "pick": 1
+  },
+  {
+    "id": 51,
+    "text": "No Próximo Tropa de Elite, Capitão Nascimento descobre que os milicianos usam _____ para _____.",
+    "pick": 2
+  },
+  {
+    "id": 52,
+    "text": "Tive diarreia depois de comer _____.",
+    "pick": 1
+  },
+  {
+    "id": 53,
+    "text": "Se eu tivesse _____ não precisaria _____. Alguém acabe",
+    "pick": 2
+  },
+  {
+    "id": 54,
+    "text": "_____ seria a solução para todos os problemas da sociedade. _____",
+    "pick": 2
+  },
+  {
+    "id": 55,
+    "text": "As músicas do NX Zero são mais tristes que _____. Desisti de",
+    "pick": 1
+  },
+  {
+    "id": 56,
+    "text": "Eu daria _____ para Satanás em troca de _____. _____",
+    "pick": 3
+  },
+  {
+    "id": 57,
+    "text": "com isso! Eu não aguento mais _____.",
+    "pick": 1
+  },
+  {
+    "id": 58,
+    "text": "é só mais um fruto de _____.",
+    "pick": 1
+  },
+  {
+    "id": 59,
+    "text": "trabalhar, agora vou viver de _____.",
+    "pick": 1
+  },
+  {
+    "id": 60,
+    "text": "é coisa do passado, a moda agora é _____.",
+    "pick": 1
+  },
+  {
+    "id": 61,
+    "text": "Meus pais se juntaram a uma nova seita que adora _____.",
+    "pick": 1
+  },
+  {
+    "id": 62,
+    "text": "8 em cada 10 goianos escolhem _____.",
+    "pick": 1
+  },
+  {
+    "id": 63,
+    "text": "O novo funcionário é muito capaz! Além disso ele tem o dom de _____.",
+    "pick": 1
+  },
+  {
+    "id": 64,
+    "text": "Todos os dias alguém morre de _____.",
+    "pick": 1
+  },
+  {
+    "id": 65,
+    "text": "Segundo a OMS, nada é mais danoso à saúde que _____.",
+    "pick": 1
+  },
+  {
+    "id": 66,
+    "text": "Em um mundo devastado por _____ o nosso único consolo é _____.",
+    "pick": 2
+  },
+  {
+    "id": 67,
+    "text": "Passo 1: _____ Passo 2: _____ Passo 3: Lucrar!",
+    "pick": 2
+  },
+  {
+    "id": 68,
+    "text": "E no primeiro dia, Deus disse: “Que haja _____.”",
+    "pick": 1
+  },
+  {
+    "id": 69,
+    "text": "Mas antes de matá-lo, Sr. Bond, eu preciso te mostrar _____.",
+    "pick": 1
+  },
+  {
+    "id": 70,
+    "text": "Belle belinha foi longe demais! Ela foi pega misturando corote com _____.",
+    "pick": 1
+  },
+  {
+    "id": 71,
+    "text": "Quando chega a noite, sou um super- herói conhecido como _____ e meu super-poder é _____.",
+    "pick": 2
+  },
+  {
+    "id": 72,
+    "text": "Para não gozar rápido, eu tento pensar em _____.",
+    "pick": 1
+  },
+  {
+    "id": 73,
+    "text": "Belchior gravou uma música com Raul Seixas! A música se chama apenas um _____. A nova receita da Ana",
+    "pick": 1
+  },
+  {
+    "id": 74,
+    "text": "Poucas coisas são tão desagradáveis quanto se masturbar pensando em _____. Lana del Rey atingiu",
+    "pick": 1
+  },
+  {
+    "id": 75,
+    "text": "A idade da Melody é um verdadeiro enigma! Para se manter jovem, ela passa _____ no rosto. A tatuagem no cu de",
+    "pick": 1
+  },
+  {
+    "id": 76,
+    "text": "Matuê resolveu criar um novo reality show, o ganhador vai receber 1 ano grátis de _____. Os Bolsonaristas acreditam",
+    "pick": 1
+  },
+  {
+    "id": 77,
+    "text": "Maria Braga é incrível ela recheiou um frango com _____.",
+    "pick": 1
+  },
+  {
+    "id": 78,
+    "text": "um novo patamar! Sua “pussy” tem gosto de _____.",
+    "pick": 1
+  },
+  {
+    "id": 79,
+    "text": "Anitta foi revelada! Ela tatuou _____ no brioco!",
+    "pick": 1
+  },
+  {
+    "id": 80,
+    "text": "mesmo em qualquer coisa! Saiu uma fake news que o MEC estará distribuindo _____ _____ para as crianças nas escolas.",
+    "pick": 2
+  }
+]
