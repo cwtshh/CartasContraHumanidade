@@ -99,8 +99,11 @@ public class RoomService {
     public void leaveRoom(String code, User user, String guestId) {
         Room room = roomRepository.findByCode(code).orElseThrow(RoomNotFoundException::new);
 
-        RoomPlayer player = (user != null) ? roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId())
-                : roomPlayerRepository.findByRoomIdAndGuestId(room.getId(), guestId).orElseThrow(RoomNotFoundException::new);
+        RoomPlayer player = (user != null)
+                ? roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId())
+                .orElseThrow(RoomNotFoundException::new)
+                : roomPlayerRepository.findByRoomIdAndGuestId(room.getId(), guestId)
+                .orElseThrow(RoomNotFoundException::new);
 
         room.removePlayer(player);
 

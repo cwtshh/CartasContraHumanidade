@@ -103,6 +103,8 @@ public class AuthService {
             throw new IllegalArgumentException("Email ou senha inválidos");
         }
 
+        sessionRepository.deleteAllByUserId(account.getUser().getId());
+
         String rawSessiontoken = tokenService.generateToken();
 
         Session session = Session.builder()

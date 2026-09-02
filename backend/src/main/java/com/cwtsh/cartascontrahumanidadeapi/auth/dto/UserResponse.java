@@ -6,7 +6,7 @@ import com.cwtsh.cartascontrahumanidadeapi.auth.domain.UserRole;
 import java.time.Instant;
 import java.util.UUID;
 
-public record UserResponse(UUID id, String name, String email, boolean emailVerified, String image, UserRole role, Instant createdAt) {
+public record UserResponse(UUID id, String displayName, String email, boolean emailVerified, String image, UserRole role, Instant createdAt) {
     public static UserResponse from(User user) {
         return new UserResponse(
                 user.getId(),

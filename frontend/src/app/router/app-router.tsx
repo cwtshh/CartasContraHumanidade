@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage, SignInPage, SignUpPage } from "@/features/auth";
+import { AuthPage } from "@/features/auth";
+import { LobbyPage, RoomsPage } from "@/features/rooms";
 import { ProtectedRoute } from "./protected-route";
 import { PublicOnlyRoute } from "./public-only-route";
 import { routePaths } from "./route-paths";
@@ -8,12 +9,13 @@ export function AppRouter() {
   return (
     <Routes>
       <Route element={<PublicOnlyRoute />}>
-        <Route path={routePaths.signIn} element={<SignInPage />} />
-        <Route path={routePaths.signUp} element={<SignUpPage />} />
+        <Route path={routePaths.signIn} element={<AuthPage />} />
+        <Route path={routePaths.signUp} element={<AuthPage />} />
       </Route>
 
       <Route element={<ProtectedRoute />}>
-        <Route path={routePaths.home} element={<HomePage />} />
+        <Route path={routePaths.home} element={<RoomsPage />} />
+        <Route path="/rooms/:code" element={<LobbyPage />} />
       </Route>
 
       <Route path="*" element={<Navigate to={routePaths.home} replace />} />

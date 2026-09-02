@@ -6,7 +6,6 @@ import com.cwtsh.cartascontrahumanidadeapi.room.dto.JoinRoomRequest;
 import com.cwtsh.cartascontrahumanidadeapi.room.dto.RoomResponse;
 import com.cwtsh.cartascontrahumanidadeapi.room.security.GuestIdentity;
 import com.cwtsh.cartascontrahumanidadeapi.room.service.RoomService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,7 @@ public class RoomController {
     };
 
     @PostMapping("/join")
-    public Response<RoomResponse> joinRoom(
+    public ResponseEntity<RoomResponse> joinRoom(
             @RequestBody JoinRoomRequest request,
             @AuthenticationPrincipal User user,
             @RequestHeader(value = "X-Guest-Id", required = false)
@@ -49,7 +48,7 @@ public class RoomController {
     }
 
     @DeleteMapping("/{code}/leave")
-    public ResponseEntity<void> leaveRoomo(
+    public ResponseEntity<Void> leaveRoomo(
             @PathVariable String code,
             @AuthenticationPrincipal User user,
             @RequestHeader(value = "X-Guest-Id", required = false)
