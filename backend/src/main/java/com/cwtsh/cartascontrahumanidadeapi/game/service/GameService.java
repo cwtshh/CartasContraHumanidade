@@ -74,6 +74,10 @@ public class GameService {
         List<WhiteCard> allWhiteCards = new ArrayList<>(whiteCardRepository.findAll());
         Collections.shuffle(allWhiteCards);
 
+        if (allWhiteCards.size() < players.size() * HAND_SIZE) {
+            throw new NoMoreCardsException();
+        }
+
         GameSession session = GameSession.builder()
                 .room(room)
                 .roundNumber(1)
@@ -276,6 +280,14 @@ public class GameService {
         List<WhiteCard> allWhiteCards = new ArrayList<>(whiteCardRepository.findAll());
         allWhiteCards.removeIf(card -> session.getUsedWhiteCardIds().contains(card.getId()));
         Collections.shuffle(allWhiteCards);
+
+        int totalMissing = session.getHands().stream()
+                .mapToInt(hand -> HAND_SIZE - hand.getCardIds().size())
+                .sum();
+
+        if (allWhiteCards.size() < totalMissing) {
+            throw new NoMoreCardsException();
+        }
 
         int cardCursor = 0;
 
