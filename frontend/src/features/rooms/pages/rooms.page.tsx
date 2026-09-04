@@ -7,7 +7,7 @@ import { useCurrentPlayer } from "@/shared/hooks/use-current-player";
 import { useCreateRoom } from "../hooks/use-create-room";
 import { useJoinRoom } from "../hooks/use-join-room";
 import { useRooms } from "../hooks/use-rooms";
-import { Button, Input, Label, TextField } from "@heroui/react";
+import { Button, Card, Input, Label, TextField } from "@heroui/react";
 
 const listVariants: Variants = {
   hidden: {},
@@ -25,6 +25,7 @@ const itemVariants: Variants = {
 };
 
 const PLAYER_LIMIT_OPTIONS = [4, 6, 8, 10, 12] as const;
+const TARGET_SCORE_OPTIONS = [5, 7, 10, 15] as const;
 
 export function RoomsPage() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ export function RoomsPage() {
   const [isCreating, setIsCreating] = useState(false);
   const [roomName, setRoomName] = useState("");
   const [maxPlayers, setMaxPlayers] = useState<number>(8);
+  const [targetScore, setTargetScore] = useState<number>(7);
 
   const createRoom = useCreateRoom();
   const joinRoom = useJoinRoom();
@@ -46,6 +48,7 @@ export function RoomsPage() {
     createRoom.reset();
     setRoomName(`Sala de ${player!.name}`);
     setMaxPlayers(8);
+    setTargetScore(7);
     setIsCreating(true);
   }
 
@@ -64,6 +67,7 @@ export function RoomsPage() {
       {
         name: trimmedName,
         maxPlayers,
+        targetScore,
         guestDisplayName: player!.isGuest ? player!.name : undefined,
       },
       {
@@ -105,7 +109,7 @@ export function RoomsPage() {
   const roomList = rooms.data?.content ?? [];
 
   return (
-    <div className="bg-background text-foreground">
+    <div className="text-foreground">
       <div className="mx-auto max-w-3xl px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
@@ -117,11 +121,15 @@ export function RoomsPage() {
             <span className="mb-2.5 block font-mono text-xs tracking-widest text-muted uppercase">
               Bem-vindo, {player.name}
             </span>
-            <h1 className="text-5xl font-black tracking-tight text-foreground">
+            <h1 className="font-display text-5xl font-bold tracking-tight text-foreground">
               Salas
             </h1>
           </div>
-          <Button type="button" onClick={openCreateForm} isDisabled={isCreating}>
+          <Button
+            type="button"
+            onClick={openCreateForm}
+            isDisabled={isCreating}
+          >
             + Criar sala
           </Button>
         </motion.div>
@@ -136,7 +144,7 @@ export function RoomsPage() {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="mb-8 overflow-hidden"
             >
-              <div className="flex flex-col gap-4 border border-border bg-surface p-5">
+              <Card className="flex flex-col gap-4 p-5">
                 <TextField
                   fullWidth
                   isRequired
@@ -176,6 +184,29 @@ export function RoomsPage() {
                   </div>
                 </div>
 
+                <div>
+                  <span className="mb-2 block font-mono text-xs tracking-widest text-muted uppercase">
+                    Pontos para vencer
+                  </span>
+                  <div className="flex gap-2">
+                    {TARGET_SCORE_OPTIONS.map((score) => (
+                      <button
+                        key={score}
+                        type="button"
+                        disabled={createRoom.isPending}
+                        onClick={() => setTargetScore(score)}
+                        className={`px-3.5 py-2 font-mono text-xs transition-colors ${
+                          targetScore === score
+                            ? "bg-foreground text-background"
+                            : "bg-transparent text-muted hover:text-foreground"
+                        }`}
+                      >
+                        {score}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
                 {createErrorMessage && (
                   <p
                     role="alert"
@@ -197,7 +228,7 @@ export function RoomsPage() {
                     {createRoom.isPending ? "Criando..." : "Criar sala"}
                   </Button>
                 </div>
-              </div>
+              </Card>
             </motion.form>
           )}
         </AnimatePresence>
@@ -206,6 +237,14 @@ export function RoomsPage() {
           <span className="font-mono text-xs tracking-widest text-muted uppercase">
             {roomList.length} salas abertas
           </span>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => rooms.refetch()}
+            isDisabled={rooms.isFetching}
+          >
+            {rooms.isFetching ? "Atualizando..." : "Atualizar"}
+          </Button>
         </div>
 
         {joinErrorMessage && (
@@ -234,48 +273,61 @@ export function RoomsPage() {
             variants={listVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col"
+            className="flex flex-col gap-2"
           >
             <AnimatePresence initial={false}>
               {roomList.map((room, i) => {
                 const isFull = room.currentPlayers >= room.maxPlayers;
                 return (
-                  <motion.div key={room.id} layout variants={itemVariants} exit="exit">
-                    <div
-                      role={isFull ? undefined : "button"}
-                      tabIndex={isFull ? undefined : 0}
-                      onClick={() => !isFull && !joinRoom.isPending && handleJoin(room.code)}
-                      className={`flex items-center justify-between py-5 transition-opacity ${
-                        isFull ? "opacity-50" : "cursor-pointer hover:opacity-70"
-                      }`}
-                    >
-                      <div className="flex items-center gap-5">
-                        <span className="min-w-6 font-mono text-xs text-muted">
-                          {String(i + 1).padStart(2, "0")}
+                  <motion.div
+                    key={room.id}
+                    layout
+                    variants={itemVariants}
+                    exit="exit"
+                    whileHover={isFull ? undefined : { y: -2 }}
+                    role={isFull ? undefined : "button"}
+                    tabIndex={isFull ? undefined : 0}
+                    onClick={() =>
+                      !isFull && !joinRoom.isPending && handleJoin(room.code)
+                    }
+                    className={`flex items-center justify-between rounded-xl border border-border bg-surface px-5 py-4 transition-colors ${
+                      isFull
+                        ? "opacity-50"
+                        : "cursor-pointer hover:border-danger/50"
+                    }`}
+                  >
+                    <div className="flex items-center gap-5">
+                      <span className="min-w-6 font-mono text-xs text-muted">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <span className="font-display text-xl font-bold text-foreground">
+                          {room.name}
                         </span>
-                        <div>
-                          <span className="text-xl font-black text-foreground">
-                            {room.name}
-                          </span>
-                          <span className="mt-1 block font-mono text-xs text-success uppercase">
-                            {isFull ? "Cheia" : "Aberta"}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-6">
-                        <span className="font-mono text-xs text-muted">
-                          {room.currentPlayers}
-                          <span className="text-border">/{room.maxPlayers}</span>
+                        <span className="mt-1 flex items-center gap-1.5 font-mono text-xs text-muted uppercase">
+                          <span
+                            className={`h-1.5 w-1.5 rounded-full ${
+                              isFull ? "bg-muted" : "bg-success"
+                            }`}
+                          />
+                          {isFull ? "Cheia" : "Aberta"}
                         </span>
-                        {!isFull && (
-                          <span className="bg-foreground px-4 py-1.5 font-mono text-xs tracking-widest text-background">
-                            Entrar →
-                          </span>
-                        )}
                       </div>
                     </div>
-                    <div className="h-px bg-border" />
+
+                    <div className="flex items-center gap-6">
+                      <span className="font-mono text-xs text-muted">
+                        {room.currentPlayers}
+                        <span className="text-border">
+                          /{room.maxPlayers}
+                        </span>
+                      </span>
+                      {!isFull && (
+                        <Button onClick={() => handleJoin(room.code)}>
+                          Entrar
+                        </Button>
+                      )}
+                    </div>
                   </motion.div>
                 );
               })}

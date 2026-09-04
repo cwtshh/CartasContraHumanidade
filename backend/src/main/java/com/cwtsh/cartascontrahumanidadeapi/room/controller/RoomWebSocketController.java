@@ -8,6 +8,7 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class RoomWebSocketController {
@@ -28,6 +29,10 @@ public class RoomWebSocketController {
         String userId = (String) sessionAttributes.get(StompAuthChannelInterceptor.USER_ID_ATTRIBUTE);
         String guestId = (String) sessionAttributes.get(StompAuthChannelInterceptor.GUEST_ID_ATTRIBUTE);
 
-        roomPresenceService.markConnectedAndBrodcast(code, userId, guestId, true);
+        UUID roomPlayerId = roomPresenceService.markConnectedAndBroadcast(code, userId, guestId);
+
+        if (roomPlayerId != null) {
+            sessionAttributes.put("roomPlayerId", roomPlayerId.toString());
+        }
     }
 }

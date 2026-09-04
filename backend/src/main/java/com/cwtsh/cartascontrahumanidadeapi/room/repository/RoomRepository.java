@@ -20,4 +20,6 @@ public interface RoomRepository extends JpaRepository<Room, UUID> {
     Page<Room> findByStatus(RoomStatus status, Pageable pageable);
 
     List<Room> findByEmptyAtIsNotNullAndEmptyAtBefore(Instant threshold);
+
+    List<Room> findByStatusAndCreatedAtBefore(RoomStatus status, Instant threshold);
 }

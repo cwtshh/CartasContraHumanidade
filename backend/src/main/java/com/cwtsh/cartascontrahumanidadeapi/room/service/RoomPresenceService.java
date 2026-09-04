@@ -5,53 +5,82 @@ import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomPlayer;
 import com.cwtsh.cartascontrahumanidadeapi.room.dto.RoomResponse;
 import com.cwtsh.cartascontrahumanidadeapi.room.repository.RoomPlayerRepository;
 import com.cwtsh.cartascontrahumanidadeapi.room.repository.RoomRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
 @Service
 public class RoomPresenceService {
+
     private final RoomRepository roomRepository;
     private final RoomPlayerRepository roomPlayerRepository;
-    private final SimpMessagingTemplate simpMessagingTemplate;
+    private final SimpMessagingTemplate messagingTemplate;
 
     public RoomPresenceService(
             RoomRepository roomRepository,
             RoomPlayerRepository roomPlayerRepository,
-            SimpMessagingTemplate simpMessagingTemplate
+            SimpMessagingTemplate messagingTemplate
     ) {
-        this.roomPlayerRepository = roomPlayerRepository;
         this.roomRepository = roomRepository;
-        this.simpMessagingTemplate = simpMessagingTemplate;
+        this.roomPlayerRepository = roomPlayerRepository;
+        this.messagingTemplate = messagingTemplate;
     }
 
     @Transactional
-    public void markConnectedAndBrodcast(String roomCode, String userId, String guestId, boolean connected) {
+    public UUID markConnectedAndBroadcast(String roomCode, String userId, String guestId) {
         Room room = roomRepository.findByCode(roomCode).orElse(null);
 
-        if(room == null) {
+        if (room == null) {
+            return null;
+        }
+
+        RoomPlayer player = findPlayer(room, userId, guestId);
+
+        if (player != null) {
+            player.markConnected();
+            roomPlayerRepository.save(player);
+            room.markNotEmpty();
+            roomRepository.save(room);
+        }
+
+        broadcastRoomState(room);
+
+        return player != null ? player.getId() : null;
+    }
+
+    @Transactional
+    public void markDisconnected(String roomCode, String userId, String guestId) {
+        Room room = roomRepository.findByCode(roomCode).orElse(null);
+
+        if (room == null) {
             return;
         }
 
         RoomPlayer player = findPlayer(room, userId, guestId);
 
-        if(player != null) {
-            player.setConnected(connected);
-            roomPlayerRepository.save(player);
+        if (player == null) {
+            return;
         }
+
+        player.markDisconnected();
+        roomPlayerRepository.save(player);
 
         broadcastRoomState(room);
     }
 
     private RoomPlayer findPlayer(Room room, String userId, String guestId) {
-        if(userId != null) {
-            return roomPlayerRepository.findByRoomIdAndUserId(room.getId(), UUID.fromString(userId)).orElse(null);
+        if (userId != null) {
+            return roomPlayerRepository
+                    .findByRoomIdAndUserId(room.getId(), UUID.fromString(userId))
+                    .orElse(null);
         }
 
-        if(guestId != null) {
-            return roomPlayerRepository.findByRoomIdAndGuestId(room.getId(), guestId).orElse(null);
+        if (guestId != null) {
+            return roomPlayerRepository
+                    .findByRoomIdAndGuestId(room.getId(), guestId)
+                    .orElse(null);
         }
 
         return null;
@@ -60,6 +89,9 @@ public class RoomPresenceService {
     private void broadcastRoomState(Room room) {
         RoomResponse response = RoomResponse.from(room);
 
-        simpMessagingTemplate.convertAndSend("/topic/rooms/" + room.getCode(), response);
+        messagingTemplate.convertAndSend(
+                "/topic/rooms/" + room.getCode(),
+                response
+        );
     }
 }

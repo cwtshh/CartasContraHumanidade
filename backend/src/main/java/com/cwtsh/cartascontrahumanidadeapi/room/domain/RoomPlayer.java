@@ -72,6 +72,9 @@ public class RoomPlayer {
     @Column(nullable = false)
     private Instant updatedAt;
 
+    @Column
+    private Instant disconnectedAt;
+
     @PrePersist
     void onCreate() {
         Instant now = Instant.now();
@@ -86,5 +89,17 @@ public class RoomPlayer {
 
     public boolean isGuest() {
         return user == null;
+    }
+
+    public void markConnected() {
+        connected = true;
+        disconnectedAt = null;
+    }
+
+    public void markDisconnected() {
+        if (connected) {
+            connected = false;
+            disconnectedAt = Instant.now();
+        }
     }
 }

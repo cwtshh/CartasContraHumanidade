@@ -39,11 +39,11 @@ export function Header() {
   }
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-border px-8">
+    <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-border/60 bg-background/70 px-6 backdrop-blur-md sm:px-8">
       <div
         role="button"
         onClick={() => navigate(routePaths.home)}
-        className="text-lg font-black tracking-tight cursor-pointer"
+        className="cursor-pointer font-display text-xl font-bold tracking-tight transition-transform hover:scale-105"
       >
         C<span className="text-danger">H</span>
       </div>

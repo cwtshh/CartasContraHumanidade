@@ -103,7 +103,7 @@ export function AuthPage() {
         : null;
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen text-foreground">
       {/* Esquerda: branding */}
       <div className="hidden md:flex w-[54%] flex-col justify-between gap-10 relative overflow-hidden p-12 border-r border-border bg-surface-secondary">
         <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-danger px-3 py-1 text-xs font-bold tracking-widest text-danger-foreground uppercase">

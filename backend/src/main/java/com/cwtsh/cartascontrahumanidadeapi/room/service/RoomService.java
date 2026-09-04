@@ -28,22 +28,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoomService {
     private static final int DEFAULT_MAX_PLAYERS = 8;
+    private static final int DEFAULT_TARGET_SCORE = 7;
+    private static final int MIN_TARGET_SCORE = 3;
+    private static final int MAX_TARGET_SCORE = 20;
 
     private final RoomRepository roomRepository;
     private final RoomPlayerRepository roomPlayerRepository;
     private final RoomCodeGenerator roomCodeGenerator;
     private final UserRepository userRepository;
+    private final RoomPlayerLifeCicleService roomPlayerLifecycleService;
 
     public RoomService(
             RoomRepository roomRepository,
             RoomPlayerRepository roomPlayerRepository,
             RoomCodeGenerator roomCodeGenerator,
-            UserRepository userRepository
+            UserRepository userRepository,
+            RoomPlayerLifeCicleService roomPlayerLifecycleService
     ) {
         this.roomRepository = roomRepository;
         this.roomPlayerRepository = roomPlayerRepository;
         this.roomCodeGenerator = roomCodeGenerator;
         this.userRepository = userRepository;
+        this.roomPlayerLifecycleService = roomPlayerLifecycleService;
     }
 
     @Transactional
@@ -57,12 +63,16 @@ public class RoomService {
         String code = generateUniqueCode();
 
         int maxPlayers = request.maxPlayers() != null ? request.maxPlayers() : DEFAULT_MAX_PLAYERS;
+        int targetScore = request.targetScore() != null
+                ? (int) Math.clamp(request.targetScore(), MIN_TARGET_SCORE, MAX_TARGET_SCORE)
+                : DEFAULT_TARGET_SCORE;
 
         Room room = Room.builder()
                 .code(code)
                 .name(request.name())
                 .status(RoomStatus.WAITING)
                 .maxPlayers(maxPlayers)
+                .targetScore(targetScore)
                 .build();
 
         RoomPlayer hostPlayer = buildPlayer(user, guest, RoomPlayerRole.HOST);
@@ -97,7 +107,8 @@ public class RoomService {
             throw new RoomFullException();
         }
 
-        RoomPlayer player = buildPlayer(user, guest, RoomPlayerRole.PLAYER);
+        RoomPlayerRole role = currentPlayers == 0 ? RoomPlayerRole.HOST : RoomPlayerRole.PLAYER;
+        RoomPlayer player = buildPlayer(user, guest, role);
 
         room.addPlayer(player);
 
@@ -106,9 +117,11 @@ public class RoomService {
         return RoomResponse.from(saved);
     }
 
+
     @Transactional
     public void leaveRoom(String code, AuthenticatedUser user, String guestId) {
-        Room room = roomRepository.findByCode(code).orElseThrow(RoomNotFoundException::new);
+        Room room = roomRepository.findByCode(code)
+                .orElseThrow(RoomNotFoundException::new);
 
         RoomPlayer player = (user != null)
                 ? roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.id())
@@ -116,19 +129,7 @@ public class RoomService {
                 : roomPlayerRepository.findByRoomIdAndGuestId(room.getId(), guestId)
                 .orElseThrow(RoomNotFoundException::new);
 
-        room.removePlayer(player);
-
-        if(room.getPlayers().isEmpty()) {
-            roomRepository.delete(room);
-            return;
-        }
-
-        if(player.getRole() == RoomPlayerRole.HOST) {
-            RoomPlayer newHost = room.getPlayers().getFirst();
-            newHost.setRole(RoomPlayerRole.HOST);
-        }
-
-        roomRepository.save(room);
+        roomPlayerLifecycleService.removePlayer(room, player);
     }
 
     @Transactional

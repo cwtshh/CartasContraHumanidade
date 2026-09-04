@@ -3,6 +3,7 @@ package com.cwtsh.cartascontrahumanidadeapi.room.repository;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomPlayer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,4 +22,8 @@ public interface RoomPlayerRepository
     boolean existsByRoomIdAndGuestId(UUID roomId, String guestId);
 
     long countByRoomId(UUID roomId);
+
+    long countByRoomIdAndConnectedTrue(UUID roomId);
+
+    List<RoomPlayer> findByConnectedFalseAndDisconnectedAtBefore(Instant threshold);
 }

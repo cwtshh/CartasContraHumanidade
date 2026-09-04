@@ -23,12 +23,14 @@ export type Room = {
   name: string;
   status: RoomStatus;
   maxPlayers: number;
+  targetScore: number;
   players: RoomMember[];
 };
 
 export type CreateRoomInput = {
   name: string;
   maxPlayers?: number;
+  targetScore?: number;
   guestDisplayName?: string;
 };
 

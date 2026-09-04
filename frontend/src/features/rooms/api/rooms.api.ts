@@ -27,4 +27,8 @@ export const roomsApi = {
 
     return response.data;
   },
+
+  async leaveRoom(code: string): Promise<void> {
+    await apiClient.delete(`/api/rooms/${code}/leave`);
+  },
 };

@@ -42,7 +42,8 @@ public class SecurityConfig {
                                 "/api/auth/sign-in",
                                 "/api/auth/sign-out",
                                 "/ws/**",
-                                "/api/rooms/**"
+                                "/api/rooms/**",
+                                "/api/cards/**"
                         ).permitAll()
                         .requestMatchers(
                                 "/oauth2/**",

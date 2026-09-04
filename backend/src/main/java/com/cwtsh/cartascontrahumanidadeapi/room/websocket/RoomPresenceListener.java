@@ -26,6 +26,6 @@ public class RoomPresenceListener {
             return;
         }
 
-        roomPresenceService.markConnectedAndBrodcast(roomCode, userId, guestId, false);
+        roomPresenceService.markDisconnected(roomCode, userId, guestId);
     }
 }

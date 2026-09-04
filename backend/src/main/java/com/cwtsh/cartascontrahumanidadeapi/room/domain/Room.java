@@ -42,6 +42,12 @@ public class Room {
     @Column(name = "max_players", nullable = false)
     private Integer maxPlayers;
 
+    @Column(name = "target_score", nullable = false)
+    private Integer targetScore;
+
+    @Column(name = "empty_at")
+    private Instant emptyAt;
+
     @Builder.Default
     @OneToMany(
             mappedBy = "room",
@@ -56,9 +62,6 @@ public class Room {
 
     @Column(nullable = false)
     private Instant updatedAt;
-
-    @Column
-    private Instant emptyAt;
 
     @PrePersist
     void onCreate() {
@@ -75,6 +78,7 @@ public class Room {
     public void addPlayer(RoomPlayer player) {
         players.add(player);
         player.setRoom(this);
+        markNotEmpty();
     }
 
     public void removePlayer(RoomPlayer player) {
@@ -86,13 +90,13 @@ public class Room {
         return players.stream().anyMatch(RoomPlayer::getConnected);
     }
 
-    public void markEmptyNow() {
-        if(emptyAt == null) {
-            emptyAt = Instant.now();
-        }
+    public void markNotEmpty() {
+        emptyAt = null;
     }
 
-    public void markNowEmpty() {
-        emptyAt = null;
+    public void markEmptyNow() {
+        if (emptyAt == null) {
+            emptyAt = Instant.now();
+        }
     }
 }

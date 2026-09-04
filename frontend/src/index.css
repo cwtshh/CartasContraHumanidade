@@ -1,6 +1,28 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      color-mix(in oklch, var(--danger) 16%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 100% 100%,
+      color-mix(in oklch, var(--accent) 10%, transparent),
+      transparent
+    ),
+    var(--background);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
 :root,
 .light,
 .default,
