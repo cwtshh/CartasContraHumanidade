@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { ApiError } from "@/shared/api/api-error";
 import { useSignIn } from "../hooks/use-sign-in";
 import { useSignUp } from "../hooks/use-sign-up";
 import { routePaths } from "@/app/router/route-paths";
+import { setGuestIdentity } from "@/shared/lib/guest-identity";
 import { Button, Input, Label, TextField } from "@heroui/react";
 import {
   AuthFormTransition,
@@ -28,6 +30,9 @@ export function AuthPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [showGuestForm, setShowGuestForm] = useState(false);
+  const [guestName, setGuestName] = useState("");
 
   const signIn = useSignIn();
   const signUp = useSignUp();
@@ -74,6 +79,16 @@ export function AuthPage() {
         },
       },
     );
+  }
+
+  function handleGuestSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const trimmedName = guestName.trim();
+    if (!trimmedName) return;
+
+    setGuestIdentity(trimmedName);
+    navigate(routePaths.home, { replace: true });
   }
 
   const activeMutation = isSignUp ? signUp : signIn;
@@ -280,6 +295,61 @@ export function AuthPage() {
               </p>
             </AuthFormTransition>
           </div>
+
+          <div className="mt-6 text-center">
+            {!showGuestForm && (
+              <button
+                type="button"
+                onClick={() => setShowGuestForm(true)}
+                className="text-sm font-semibold text-muted hover:text-foreground hover:underline"
+              >
+                ou jogue como convidado
+              </button>
+            )}
+          </div>
+
+          <AnimatePresence initial={false}>
+            {showGuestForm && (
+              <motion.form
+                onSubmit={handleGuestSubmit}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="mt-6 overflow-hidden"
+              >
+                <div className="flex flex-col gap-4 rounded-3xl border border-border bg-surface p-6 shadow-surface">
+                  <div>
+                    <h2 className="text-base font-extrabold tracking-tight text-foreground">
+                      Jogar como convidado
+                    </h2>
+                    <p className="mt-1 text-sm text-muted">
+                      Sem conta, sem senha. Só o nome pra começar a jogar.
+                    </p>
+                  </div>
+
+                  <TextField fullWidth isRequired validationBehavior="aria" autoFocus>
+                    <Label>Seu nome</Label>
+                    <Input
+                      name="guestName"
+                      placeholder="Como te chamamos na sala?"
+                      value={guestName}
+                      onChange={(event) => setGuestName(event.target.value)}
+                    />
+                  </TextField>
+
+                  <div className="flex justify-end gap-3">
+                    <Button type="button" onClick={() => setShowGuestForm(false)}>
+                      Cancelar
+                    </Button>
+                    <Button type="submit" className="font-bold tracking-wide uppercase">
+                      Continuar
+                    </Button>
+                  </div>
+                </div>
+              </motion.form>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

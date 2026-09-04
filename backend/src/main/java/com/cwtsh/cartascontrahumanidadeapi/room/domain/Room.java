@@ -57,6 +57,9 @@ public class Room {
     @Column(nullable = false)
     private Instant updatedAt;
 
+    @Column
+    private Instant emptyAt;
+
     @PrePersist
     void onCreate() {
         Instant now = Instant.now();
@@ -77,5 +80,19 @@ public class Room {
     public void removePlayer(RoomPlayer player) {
         players.remove(player);
         player.setRoom(null);
+    }
+
+    public boolean hasConnectedPlayers() {
+        return players.stream().anyMatch(RoomPlayer::getConnected);
+    }
+
+    public void markEmptyNow() {
+        if(emptyAt == null) {
+            emptyAt = Instant.now();
+        }
+    }
+
+    public void markNowEmpty() {
+        emptyAt = null;
     }
 }

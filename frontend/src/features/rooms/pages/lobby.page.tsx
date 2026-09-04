@@ -1,19 +1,31 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSession } from "@/features/auth";
+import { useQuery } from "@tanstack/react-query";
 import { routePaths } from "@/app/router/route-paths";
 import { PlayerPip } from "@/shared/components/player-pip";
+import { useCurrentPlayer } from "@/shared/hooks/use-current-player";
 import { MOCK_LOBBY_PLAYERS } from "../data/mock-rooms";
-import type { LobbyPlayer } from "../types/rooms.types";
+import { roomsQueryKeys } from "../queries/rooms.query-keys";
+import { useRoomPresence } from "../hooks/use-room-presence";
+import type { LobbyPlayer, Room } from "../types/rooms.types";
 
-const MAX_PLAYERS = 8;
+const DEFAULT_MAX_PLAYERS = 8;
 const COUNTDOWN_SECONDS = 3;
 
 export function LobbyPage() {
   const { code } = useParams<{ code: string }>();
   const navigate = useNavigate();
-  const session = useSession();
+  const player = useCurrentPlayer();
   const [countdown, setCountdown] = useState<number | null>(null);
+
+  useRoomPresence(code, player);
+
+  const cachedRoom = useQuery<Room>({
+    queryKey: roomsQueryKeys.byCode(code ?? ""),
+    queryFn: () => Promise.reject(new Error("Room is only readable from cache")),
+    enabled: false,
+    retry: false,
+  });
 
   useEffect(() => {
     if (countdown === null) return;
@@ -25,17 +37,28 @@ export function LobbyPage() {
     return () => clearTimeout(timer);
   }, [countdown, navigate, code]);
 
-  if (!session.data) {
+  if (!player) {
     return null;
   }
 
+  const realRoom = code ? cachedRoom.data : undefined;
+
   const you: LobbyPlayer = {
-    id: session.data.id,
-    name: session.data.displayName,
+    id: player.id,
+    name: player.name,
     role: "HOST",
   };
-  const players = [you, ...MOCK_LOBBY_PLAYERS];
-  const emptySlots = Math.max(MAX_PLAYERS - players.length, 0);
+
+  const maxPlayers = realRoom?.maxPlayers ?? DEFAULT_MAX_PLAYERS;
+  const players: LobbyPlayer[] = realRoom
+    ? realRoom.players.map((p) => ({
+        id: p.id,
+        name: p.displayName,
+        role: p.role,
+        connected: p.connected,
+      }))
+    : [you, ...MOCK_LOBBY_PLAYERS];
+  const emptySlots = Math.max(maxPlayers - players.length, 0);
 
   return (
     <div className="bg-background text-foreground">
@@ -55,7 +78,7 @@ export function LobbyPage() {
           Sala {code}
         </h1>
         <span className="font-mono text-xs text-muted">
-          {players.length}/{MAX_PLAYERS} jogadores · 8 rodadas · 60s por turno
+          {players.length}/{maxPlayers} jogadores · 8 rodadas · 60s por turno
         </span>
 
         <div className="my-8 h-px bg-border" />
@@ -63,14 +86,23 @@ export function LobbyPage() {
         <div className="mb-10 flex flex-col">
           {players.map((p) => (
             <div key={p.id}>
-              <div className="flex items-center gap-4 py-3.5">
+              <div
+                className={`flex items-center gap-4 py-3.5 ${
+                  p.connected === false ? "opacity-40" : ""
+                }`}
+              >
                 <PlayerPip name={p.name} size={36} />
                 <div className="flex-1">
                   <span className="font-medium text-foreground">
                     {p.name}
-                    {p.id === you.id && (
+                    {p.name === you.name && (
                       <span className="ml-2 font-mono text-xs text-muted">
                         você
+                      </span>
+                    )}
+                    {p.connected === false && (
+                      <span className="ml-2 font-mono text-xs text-muted uppercase">
+                        offline
                       </span>
                     )}
                   </span>

@@ -1,18 +1,13 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { useSession } from "@/features/auth";
 import { routePaths } from "@/app/router/route-paths";
-import { MOCK_ROOMS } from "../data/mock-rooms";
-import type { RoomListItem } from "../types/rooms.types";
-
-type RoomFilter = "all" | "waiting";
-
-const filterIndicatorTransition = {
-  type: "spring",
-  stiffness: 500,
-  damping: 35,
-} as const;
+import { ApiError } from "@/shared/api/api-error";
+import { useCurrentPlayer } from "@/shared/hooks/use-current-player";
+import { useCreateRoom } from "../hooks/use-create-room";
+import { useJoinRoom } from "../hooks/use-join-room";
+import { useRooms } from "../hooks/use-rooms";
+import { Button, Input, Label, TextField } from "@heroui/react";
 
 const listVariants: Variants = {
   hidden: {},
@@ -29,39 +24,85 @@ const itemVariants: Variants = {
   exit: { opacity: 0, y: -8, transition: { duration: 0.15 } },
 };
 
+const PLAYER_LIMIT_OPTIONS = [4, 6, 8, 10, 12] as const;
+
 export function RoomsPage() {
   const navigate = useNavigate();
-  const session = useSession();
-  const [rooms, setRooms] = useState<RoomListItem[]>(MOCK_ROOMS);
-  const [filter, setFilter] = useState<RoomFilter>("all");
+  const player = useCurrentPlayer();
+  const rooms = useRooms();
 
-  if (!session.data) {
+  const [isCreating, setIsCreating] = useState(false);
+  const [roomName, setRoomName] = useState("");
+  const [maxPlayers, setMaxPlayers] = useState<number>(8);
+
+  const createRoom = useCreateRoom();
+  const joinRoom = useJoinRoom();
+
+  if (!player) {
     return null;
   }
 
-  const shown = rooms.filter(
-    (room) => filter === "all" || room.status === "WAITING",
-  );
-
-  function handleCreate() {
-    const code = Math.random().toString(36).slice(2, 8).toUpperCase();
-    const newRoom: RoomListItem = {
-      id: code,
-      code,
-      name: `Sala de ${session.data!.displayName}`,
-      status: "WAITING",
-      playerCount: 1,
-      maxPlayers: 8,
-      locked: false,
-    };
-    setRooms((prev) => [newRoom, ...prev]);
-    navigate(routePaths.room(code));
+  function openCreateForm() {
+    createRoom.reset();
+    setRoomName(`Sala de ${player!.name}`);
+    setMaxPlayers(8);
+    setIsCreating(true);
   }
 
-  function handleJoin(room: RoomListItem) {
-    if (room.status !== "WAITING") return;
-    navigate(routePaths.room(room.code));
+  function closeCreateForm() {
+    setIsCreating(false);
+    createRoom.reset();
   }
+
+  function handleCreateSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const trimmedName = roomName.trim();
+    if (!trimmedName) return;
+
+    createRoom.mutate(
+      {
+        name: trimmedName,
+        maxPlayers,
+        guestDisplayName: player!.isGuest ? player!.name : undefined,
+      },
+      {
+        onSuccess: (room) => {
+          navigate(routePaths.room(room.code));
+        },
+      },
+    );
+  }
+
+  function handleJoin(code: string) {
+    joinRoom.mutate(
+      {
+        code,
+        guestDisplayName: player!.isGuest ? player!.name : undefined,
+      },
+      {
+        onSuccess: (room) => {
+          navigate(routePaths.room(room.code));
+        },
+      },
+    );
+  }
+
+  const createErrorMessage =
+    createRoom.error instanceof ApiError
+      ? createRoom.error.message
+      : createRoom.isError
+        ? "Não foi possível criar a sala. Tente novamente."
+        : null;
+
+  const joinErrorMessage =
+    joinRoom.error instanceof ApiError
+      ? joinRoom.error.message
+      : joinRoom.isError
+        ? "Não foi possível entrar na sala. Tente novamente."
+        : null;
+
+  const roomList = rooms.data?.content ?? [];
 
   return (
     <div className="bg-background text-foreground">
@@ -74,125 +115,183 @@ export function RoomsPage() {
         >
           <div>
             <span className="mb-2.5 block font-mono text-xs tracking-widest text-muted uppercase">
-              Bem-vindo, {session.data.displayName}
+              Bem-vindo, {player.name}
             </span>
             <h1 className="text-5xl font-black tracking-tight text-foreground">
               Salas
             </h1>
           </div>
-          <motion.button
-            type="button"
-            onClick={handleCreate}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="bg-danger px-6 py-3 text-sm font-black tracking-widest text-danger-foreground uppercase"
-          >
+          <Button type="button" onClick={openCreateForm} isDisabled={isCreating}>
             + Criar sala
-          </motion.button>
+          </Button>
         </motion.div>
 
-        <div className="relative mb-6 flex border-b border-border">
-          {(["all", "waiting"] as const).map((f) => (
-            <button
-              key={f}
-              type="button"
-              onClick={() => setFilter(f)}
-              className={`relative -mb-px px-5 pt-2 pb-3 font-mono text-xs tracking-widest uppercase transition-colors ${
-                filter === f
-                  ? "text-foreground"
-                  : "text-muted hover:text-foreground"
-              }`}
+        <AnimatePresence initial={false}>
+          {isCreating && (
+            <motion.form
+              onSubmit={handleCreateSubmit}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="mb-8 overflow-hidden"
             >
-              {f === "all" ? "Todas" : "Abertas"}
-              {filter === f && (
-                <motion.span
-                  layoutId="rooms-filter-indicator"
-                  transition={filterIndicatorTransition}
-                  className="absolute right-0 -bottom-px left-0 h-0.5 bg-foreground"
-                />
-              )}
-            </button>
-          ))}
+              <div className="flex flex-col gap-4 border border-border bg-surface p-5">
+                <TextField
+                  fullWidth
+                  isRequired
+                  isDisabled={createRoom.isPending}
+                  validationBehavior="aria"
+                  autoFocus
+                >
+                  <Label>Nome da sala</Label>
+                  <Input
+                    name="roomName"
+                    placeholder="Amigos do Rafinha"
+                    value={roomName}
+                    onChange={(event) => setRoomName(event.target.value)}
+                  />
+                </TextField>
+
+                <div>
+                  <span className="mb-2 block font-mono text-xs tracking-widest text-muted uppercase">
+                    Máximo de jogadores
+                  </span>
+                  <div className="flex gap-2">
+                    {PLAYER_LIMIT_OPTIONS.map((limit) => (
+                      <button
+                        key={limit}
+                        type="button"
+                        disabled={createRoom.isPending}
+                        onClick={() => setMaxPlayers(limit)}
+                        className={`px-3.5 py-2 font-mono text-xs transition-colors ${
+                          maxPlayers === limit
+                            ? "bg-foreground text-background"
+                            : "bg-transparent text-muted hover:text-foreground"
+                        }`}
+                      >
+                        {limit}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {createErrorMessage && (
+                  <p
+                    role="alert"
+                    className="rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
+                  >
+                    {createErrorMessage}
+                  </p>
+                )}
+
+                <div className="flex justify-end gap-3">
+                  <Button
+                    type="button"
+                    onClick={closeCreateForm}
+                    isDisabled={createRoom.isPending}
+                  >
+                    Cancelar
+                  </Button>
+                  <Button type="submit" isDisabled={createRoom.isPending}>
+                    {createRoom.isPending ? "Criando..." : "Criar sala"}
+                  </Button>
+                </div>
+              </div>
+            </motion.form>
+          )}
+        </AnimatePresence>
+
+        <div className="mb-6 flex items-center justify-between border-b border-border pb-3">
+          <span className="font-mono text-xs tracking-widest text-muted uppercase">
+            {roomList.length} salas abertas
+          </span>
         </div>
 
-        <motion.div
-          variants={listVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col"
-        >
-          <AnimatePresence initial={false}>
-            {shown.map((room, i) => {
-              const isOpen = room.status === "WAITING";
-              return (
-                <motion.div
-                  key={room.id}
-                  layout
-                  variants={itemVariants}
-                  exit="exit"
-                >
-                  <div
-                    role={isOpen ? "button" : undefined}
-                    tabIndex={isOpen ? 0 : undefined}
-                    onClick={() => handleJoin(room)}
-                    className={`flex items-center justify-between py-5 transition-opacity ${
-                      isOpen ? "cursor-pointer hover:opacity-70" : ""
-                    }`}
-                  >
-                    <div className="flex items-center gap-5">
-                      <span className="min-w-6 font-mono text-xs text-muted">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <div className="flex items-center gap-2.5">
+        {joinErrorMessage && (
+          <p
+            role="alert"
+            className="mb-6 rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
+          >
+            {joinErrorMessage}
+          </p>
+        )}
+
+        {rooms.isPending && (
+          <p className="py-12 text-center font-mono text-xs text-muted uppercase">
+            Carregando salas...
+          </p>
+        )}
+
+        {rooms.isError && (
+          <p className="py-12 text-center font-mono text-xs text-muted uppercase">
+            Não foi possível carregar as salas.
+          </p>
+        )}
+
+        {rooms.isSuccess && (
+          <motion.div
+            variants={listVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col"
+          >
+            <AnimatePresence initial={false}>
+              {roomList.map((room, i) => {
+                const isFull = room.currentPlayers >= room.maxPlayers;
+                return (
+                  <motion.div key={room.id} layout variants={itemVariants} exit="exit">
+                    <div
+                      role={isFull ? undefined : "button"}
+                      tabIndex={isFull ? undefined : 0}
+                      onClick={() => !isFull && !joinRoom.isPending && handleJoin(room.code)}
+                      className={`flex items-center justify-between py-5 transition-opacity ${
+                        isFull ? "opacity-50" : "cursor-pointer hover:opacity-70"
+                      }`}
+                    >
+                      <div className="flex items-center gap-5">
+                        <span className="min-w-6 font-mono text-xs text-muted">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div>
                           <span className="text-xl font-black text-foreground">
                             {room.name}
                           </span>
-                          {room.locked && (
-                            <span className="font-mono text-xs text-muted">
-                              🔒
-                            </span>
-                          )}
+                          <span className="mt-1 block font-mono text-xs text-success uppercase">
+                            {isFull ? "Cheia" : "Aberta"}
+                          </span>
                         </div>
-                        <span
-                          className={`mt-1 block font-mono text-xs uppercase ${
-                            isOpen ? "text-success" : "text-muted"
-                          }`}
-                        >
-                          {isOpen ? "Aberta" : "Em andamento"}
+                      </div>
+
+                      <div className="flex items-center gap-6">
+                        <span className="font-mono text-xs text-muted">
+                          {room.currentPlayers}
+                          <span className="text-border">/{room.maxPlayers}</span>
                         </span>
+                        {!isFull && (
+                          <span className="bg-foreground px-4 py-1.5 font-mono text-xs tracking-widest text-background">
+                            Entrar →
+                          </span>
+                        )}
                       </div>
                     </div>
+                    <div className="h-px bg-border" />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
 
-                    <div className="flex items-center gap-6">
-                      <span className="font-mono text-xs text-muted">
-                        {room.playerCount}
-                        <span className="text-border">/{room.maxPlayers}</span>
-                      </span>
-                      {isOpen && (
-                        <span className="bg-foreground px-4 py-1.5 font-mono text-xs tracking-widest text-background">
-                          Entrar →
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="h-px bg-border" />
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-
-          {shown.length === 0 && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="py-12 text-center font-mono text-xs text-muted uppercase"
-            >
-              Nenhuma sala encontrada
-            </motion.p>
-          )}
-        </motion.div>
+            {roomList.length === 0 && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="py-12 text-center font-mono text-xs text-muted uppercase"
+              >
+                Nenhuma sala aberta agora
+              </motion.p>
+            )}
+          </motion.div>
+        )}
       </div>
     </div>
   );

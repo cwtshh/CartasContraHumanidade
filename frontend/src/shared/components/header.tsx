@@ -1,10 +1,13 @@
-import { useSession, useSignOut } from "@/features/auth";
+import { useSignOut } from "@/features/auth";
 import { useNavigate } from "react-router-dom";
 import { routePaths } from "@/app/router/route-paths";
+import { useCurrentPlayer } from "@/shared/hooks/use-current-player";
+import { clearGuestIdentity } from "@/shared/lib/guest-identity";
 import {
   Avatar,
   AvatarFallback,
   Button,
+  Chip,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -14,10 +17,16 @@ import {
 
 export function Header() {
   const navigate = useNavigate();
-  const session = useSession();
+  const player = useCurrentPlayer();
   const signOut = useSignOut();
 
   function handleSignOut() {
+    if (player?.isGuest) {
+      clearGuestIdentity();
+      navigate(routePaths.signIn, { replace: true });
+      return;
+    }
+
     signOut.mutate(undefined, {
       onSuccess: () => {
         navigate(routePaths.signIn, { replace: true });
@@ -25,45 +34,50 @@ export function Header() {
     });
   }
 
-  if (!session.data) {
+  if (!player) {
     return null;
   }
 
   return (
     <header className="flex h-14 items-center justify-between border-b border-border px-8">
-      <div className="text-lg font-black tracking-tight">
+      <div
+        role="button"
+        onClick={() => navigate(routePaths.home)}
+        className="text-lg font-black tracking-tight cursor-pointer"
+      >
         C<span className="text-danger">H</span>
       </div>
       <div className="flex items-center gap-3">
         <Dropdown>
           <DropdownTrigger>
-            <div className="flex cursor-pointer items-center gap-2">
+            <div className="flex cursor-pointer items-center justify-center gap-2">
               <Avatar>
-                <AvatarFallback>
-                  {session.data.displayName.charAt(0)}
-                </AvatarFallback>
+                <AvatarFallback>{player.name.charAt(0)}</AvatarFallback>
               </Avatar>
 
-              <span className="font-mono text-xs">
-                {session.data.displayName}
-              </span>
+              <span className="text-sm font-bold ">{player.name}</span>
+              {player.isGuest && <Chip color="accent">Convidado</Chip>}
             </div>
           </DropdownTrigger>
           <DropdownPopover>
             <DropdownMenu>
-              <DropdownItem id="profile">Perfil</DropdownItem>
-              <DropdownItem id="settings">Configurações</DropdownItem>
+              {!player.isGuest && (
+                <>
+                  <DropdownItem id="profile">Perfil</DropdownItem>
+                  <DropdownItem id="settings">Configurações</DropdownItem>
+                </>
+              )}
               <DropdownItem
                 id="logout"
                 className="flex items-center justify-center"
               >
                 <Button
                   type="button"
-                  isDisabled={signOut.isPending}
+                  isDisabled={!player.isGuest && signOut.isPending}
                   onClick={handleSignOut}
                   className="w-full"
                 >
-                  {signOut.isPending ? "Saindo..." : "Sair"}
+                  {!player.isGuest && signOut.isPending ? "Saindo..." : "Sair"}
                 </Button>
               </DropdownItem>
             </DropdownMenu>

@@ -40,7 +40,9 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/auth/sign-up",
                                 "/api/auth/sign-in",
-                                "/api/auth/sign-out"
+                                "/api/auth/sign-out",
+                                "/ws/**",
+                                "/api/rooms/**"
                         ).permitAll()
                         .requestMatchers(
                                 "/oauth2/**",

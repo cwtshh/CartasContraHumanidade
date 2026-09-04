@@ -3,15 +3,19 @@ import { useSession } from "@/features/auth";
 import { routePaths } from "./route-paths";
 import { Loading } from "@/shared/pages/loading/Loading";
 import { Header } from "@/shared/components/header";
+import { getGuestIdentity } from "@/shared/lib/guest-identity";
 
 export function ProtectedRoute() {
   const session = useSession();
+  const isGuest = !!getGuestIdentity();
 
-  if (session.isPending) {
+  if (session.isPending && !isGuest) {
     return <Loading />;
   }
 
-  if (session.isError || !session.data) {
+  const hasAccess = !!session.data || isGuest;
+
+  if (!hasAccess) {
     return <Navigate to={routePaths.signIn} replace />;
   }
 

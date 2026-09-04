@@ -1,5 +1,9 @@
 package com.cwtsh.cartascontrahumanidadeapi.common.exception;
 
+import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.InvalidGuestIdentityException;
+import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.RoomAlreadyStartedException;
+import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.RoomFullException;
+import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.RoomNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +23,30 @@ public class GlobalExceptionHandler {
             HttpServletRequest request
     ) {
         return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
+    }
+
+    @ExceptionHandler(InvalidGuestIdentityException.class)
+    public ResponseEntity<ApiErrorResponse> handleInvalidGuestIdentity(
+            InvalidGuestIdentityException ex,
+            HttpServletRequest request
+    ) {
+        return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
+    }
+
+    @ExceptionHandler(RoomNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleRoomNotFound(
+            RoomNotFoundException ex,
+            HttpServletRequest request
+    ) {
+        return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request);
+    }
+
+    @ExceptionHandler({RoomFullException.class, RoomAlreadyStartedException.class})
+    public ResponseEntity<ApiErrorResponse> handleRoomConflict(
+            RuntimeException ex,
+            HttpServletRequest request
+    ) {
+        return buildResponse(HttpStatus.CONFLICT, ex.getMessage(), request);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

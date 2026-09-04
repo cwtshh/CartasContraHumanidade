@@ -7,5 +7,6 @@ export function useSession() {
     queryKey: authQueryKeys.session(),
     queryFn: authApi.getSession,
     retry: false,
+    retryOnMount: false,
   });
 }

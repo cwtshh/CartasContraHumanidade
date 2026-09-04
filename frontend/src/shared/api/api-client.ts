@@ -1,5 +1,6 @@
 import axios, { type AxiosError } from "axios";
 import { env } from "@/shared/config/env";
+import { getGuestIdentity } from "@/shared/lib/guest-identity";
 import { ApiError, type ApiErrorBody } from "./api-error";
 
 export const apiClient = axios.create({
@@ -9,6 +10,16 @@ export const apiClient = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
+});
+
+apiClient.interceptors.request.use((config) => {
+  const guest = getGuestIdentity();
+
+  if (guest) {
+    config.headers.set("X-Guest-Id", guest.id);
+  }
+
+  return config;
 });
 
 function isApiErrorBody(value: unknown): value is ApiErrorBody {

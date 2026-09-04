@@ -34,7 +34,9 @@ public class CorsConfig {
                 "Authorization",
                 "X-Requested-With",
                 "Accept",
-                "Origin"
+                "Origin",
+                "X-Guest-Id",
+                "X-Guest-Name"
         ));
 
         configuration.setExposedHeaders(List.of(

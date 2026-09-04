@@ -1,12 +1,16 @@
 package com.cwtsh.cartascontrahumanidadeapi.room.service;
 
 import com.cwtsh.cartascontrahumanidadeapi.auth.domain.User;
+import com.cwtsh.cartascontrahumanidadeapi.auth.repository.UserRepository;
+import com.cwtsh.cartascontrahumanidadeapi.auth.security.AuthenticatedUser;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.Room;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomPlayer;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomPlayerRole;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomStatus;
 import com.cwtsh.cartascontrahumanidadeapi.room.dto.CreateRoomRequest;
+import com.cwtsh.cartascontrahumanidadeapi.room.dto.PageResponse;
 import com.cwtsh.cartascontrahumanidadeapi.room.dto.RoomResponse;
+import com.cwtsh.cartascontrahumanidadeapi.room.dto.RoomSummaryResponse;
 import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.InvalidGuestIdentityException;
 import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.RoomAlreadyStartedException;
 import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.RoomFullException;
@@ -15,6 +19,10 @@ import com.cwtsh.cartascontrahumanidadeapi.room.repository.RoomPlayerRepository;
 import com.cwtsh.cartascontrahumanidadeapi.room.repository.RoomRepository;
 import com.cwtsh.cartascontrahumanidadeapi.room.security.GuestIdentity;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,21 +32,24 @@ public class RoomService {
     private final RoomRepository roomRepository;
     private final RoomPlayerRepository roomPlayerRepository;
     private final RoomCodeGenerator roomCodeGenerator;
+    private final UserRepository userRepository;
 
     public RoomService(
             RoomRepository roomRepository,
             RoomPlayerRepository roomPlayerRepository,
-            RoomCodeGenerator roomCodeGenerator
+            RoomCodeGenerator roomCodeGenerator,
+            UserRepository userRepository
     ) {
         this.roomRepository = roomRepository;
         this.roomPlayerRepository = roomPlayerRepository;
         this.roomCodeGenerator = roomCodeGenerator;
+        this.userRepository = userRepository;
     }
 
     @Transactional
     public RoomResponse createRoom(
             CreateRoomRequest request,
-            User user,
+            AuthenticatedUser user,
             GuestIdentity guest
     ) {
         validateIdentity(user, guest);
@@ -64,7 +75,7 @@ public class RoomService {
     }
 
     @Transactional
-    public RoomResponse joinRoom(String code, User user, GuestIdentity guest) {
+    public RoomResponse joinRoom(String code, AuthenticatedUser user, GuestIdentity guest) {
         validateIdentity(user, guest);
 
         Room room = roomRepository.findByCode(code).orElseThrow(RoomNotFoundException::new);
@@ -73,7 +84,7 @@ public class RoomService {
             throw new RoomAlreadyStartedException();
         }
 
-        boolean aleradyJoined = (user != null) ? roomPlayerRepository.existsByRoomIdAndUserId(room.getId(), user.getId())
+        boolean aleradyJoined = (user != null) ? roomPlayerRepository.existsByRoomIdAndUserId(room.getId(), user.id())
                 : roomPlayerRepository.existsByRoomIdAndGuestId(room.getId(), guest.guestId());
 
         if(aleradyJoined) {
@@ -96,11 +107,11 @@ public class RoomService {
     }
 
     @Transactional
-    public void leaveRoom(String code, User user, String guestId) {
+    public void leaveRoom(String code, AuthenticatedUser user, String guestId) {
         Room room = roomRepository.findByCode(code).orElseThrow(RoomNotFoundException::new);
 
         RoomPlayer player = (user != null)
-                ? roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId())
+                ? roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.id())
                 .orElseThrow(RoomNotFoundException::new)
                 : roomPlayerRepository.findByRoomIdAndGuestId(room.getId(), guestId)
                 .orElseThrow(RoomNotFoundException::new);
@@ -127,11 +138,28 @@ public class RoomService {
         return RoomResponse.from(room);
     }
 
-    private RoomPlayer buildPlayer(User user, GuestIdentity guest, RoomPlayerRole role) {
+    @Transactional
+    public PageResponse<RoomSummaryResponse> findRecentRooms(int page, int size) {
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by(Sort.Direction.DESC, "createdAt")
+        );
+
+        Page<Room> rooms = roomRepository.findByStatus(RoomStatus.WAITING, pageable);
+
+        Page<RoomSummaryResponse> mapped = rooms.map(RoomSummaryResponse::from);
+
+        return PageResponse.from(mapped);
+    }
+
+    private RoomPlayer buildPlayer(AuthenticatedUser user, GuestIdentity guest, RoomPlayerRole role) {
         if(user != null) {
+            User userRef = userRepository.getReferenceById(user.id());
+
             return RoomPlayer.builder()
-                    .user(user)
-                    .displayName(user.getDisplayName())
+                    .user(userRef)
+                    .displayName(user.displayName())
                     .role(role)
                     .build();
         }
@@ -143,12 +171,14 @@ public class RoomService {
                 .build();
     }
 
-    private void validateIdentity(User user, GuestIdentity guest) {
+    private void validateIdentity(AuthenticatedUser user, GuestIdentity guest) {
         if(user != null) {
             return;
         }
 
-        if(guest == null || guest.guestId().isBlank() || guest.displayName() == null || guest.displayName().isBlank()) {
+        if(guest == null
+                || guest.guestId() == null || guest.guestId().isBlank()
+                || guest.displayName() == null || guest.displayName().isBlank()) {
             throw new InvalidGuestIdentityException();
         }
     }
