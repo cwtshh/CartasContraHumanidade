@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { routePaths } from "@/app/router/route-paths";
@@ -7,7 +7,7 @@ import { useCurrentPlayer } from "@/shared/hooks/use-current-player";
 import { useCreateRoom } from "../hooks/use-create-room";
 import { useJoinRoom } from "../hooks/use-join-room";
 import { useRooms } from "../hooks/use-rooms";
-import { Button, Card, Input, Label, TextField } from "@heroui/react";
+import { Button, Card, Input, Label, TextField, toast } from "@heroui/react";
 
 const listVariants: Variants = {
   hidden: {},
@@ -36,9 +36,30 @@ export function RoomsPage() {
   const [roomName, setRoomName] = useState("");
   const [maxPlayers, setMaxPlayers] = useState<number>(8);
   const [targetScore, setTargetScore] = useState<number>(7);
+  const [joinCode, setJoinCode] = useState("");
 
   const createRoom = useCreateRoom();
   const joinRoom = useJoinRoom();
+
+  useEffect(() => {
+    if (!createRoom.isError) return;
+    const message =
+      createRoom.error instanceof ApiError
+        ? createRoom.error.message
+        : "Não foi possível criar a sala. Tente novamente.";
+    toast.danger(message);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [createRoom.error]);
+
+  useEffect(() => {
+    if (!joinRoom.isError) return;
+    const message =
+      joinRoom.error instanceof ApiError
+        ? joinRoom.error.message
+        : "Não foi possível entrar na sala. Tente novamente.";
+    toast.danger(message);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [joinRoom.error]);
 
   if (!player) {
     return null;
@@ -78,6 +99,15 @@ export function RoomsPage() {
     );
   }
 
+  function handleJoinByCode(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const trimmedCode = joinCode.trim().toUpperCase();
+    if (!trimmedCode) return;
+
+    handleJoin(trimmedCode);
+  }
+
   function handleJoin(code: string) {
     joinRoom.mutate(
       {
@@ -91,20 +121,6 @@ export function RoomsPage() {
       },
     );
   }
-
-  const createErrorMessage =
-    createRoom.error instanceof ApiError
-      ? createRoom.error.message
-      : createRoom.isError
-        ? "Não foi possível criar a sala. Tente novamente."
-        : null;
-
-  const joinErrorMessage =
-    joinRoom.error instanceof ApiError
-      ? joinRoom.error.message
-      : joinRoom.isError
-        ? "Não foi possível entrar na sala. Tente novamente."
-        : null;
 
   const roomList = rooms.data?.content ?? [];
 
@@ -133,6 +149,32 @@ export function RoomsPage() {
             + Criar sala
           </Button>
         </motion.div>
+
+        <motion.form
+          onSubmit={handleJoinByCode}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05, duration: 0.3, ease: "easeOut" }}
+          className="mb-8 flex gap-3"
+        >
+          <TextField fullWidth isDisabled={joinRoom.isPending} className="flex-1">
+            <Input
+              name="joinCode"
+              placeholder="Entrar com código da sala"
+              value={joinCode}
+              onChange={(event) => setJoinCode(event.target.value.toUpperCase())}
+              maxLength={6}
+              className="font-mono tracking-widest uppercase"
+            />
+          </TextField>
+          <Button
+            type="submit"
+            variant="outline"
+            isDisabled={joinRoom.isPending || joinCode.trim().length === 0}
+          >
+            {joinRoom.isPending ? "Entrando..." : "Entrar"}
+          </Button>
+        </motion.form>
 
         <AnimatePresence initial={false}>
           {isCreating && (
@@ -207,15 +249,6 @@ export function RoomsPage() {
                   </div>
                 </div>
 
-                {createErrorMessage && (
-                  <p
-                    role="alert"
-                    className="rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
-                  >
-                    {createErrorMessage}
-                  </p>
-                )}
-
                 <div className="flex justify-end gap-3">
                   <Button
                     type="button"
@@ -246,15 +279,6 @@ export function RoomsPage() {
             {rooms.isFetching ? "Atualizando..." : "Atualizar"}
           </Button>
         </div>
-
-        {joinErrorMessage && (
-          <p
-            role="alert"
-            className="mb-6 rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
-          >
-            {joinErrorMessage}
-          </p>
-        )}
 
         {rooms.isPending && (
           <p className="py-12 text-center font-mono text-xs text-muted uppercase">

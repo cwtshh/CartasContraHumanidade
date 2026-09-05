@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ApiError } from "@/shared/api/api-error";
@@ -6,7 +6,7 @@ import { useSignIn } from "../hooks/use-sign-in";
 import { useSignUp } from "../hooks/use-sign-up";
 import { routePaths } from "@/app/router/route-paths";
 import { setGuestIdentity } from "@/shared/lib/guest-identity";
-import { Button, Input, Label, TextField } from "@heroui/react";
+import { Button, Input, Label, TextField, toast } from "@heroui/react";
 import {
   AuthFormTransition,
   AuthTabs,
@@ -101,6 +101,11 @@ export function AuthPage() {
           ? "Não foi possível criar sua conta. Tente novamente."
           : "Não foi possível entrar. Tente novamente."
         : null;
+
+  useEffect(() => {
+    if (errorMessage) toast.danger(errorMessage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeMutation.error]);
 
   return (
     <div className="flex min-h-screen text-foreground">
@@ -244,15 +249,6 @@ export function AuthPage() {
                     onChange={(event) => setPassword(event.target.value)}
                   />
                 </TextField>
-
-                {errorMessage && (
-                  <p
-                    role="alert"
-                    className="rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
-                  >
-                    {errorMessage}
-                  </p>
-                )}
 
                 <Button
                   type="submit"
