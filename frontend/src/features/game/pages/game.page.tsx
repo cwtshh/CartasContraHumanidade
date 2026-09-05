@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button, Chip, Separator, Skeleton } from "@heroui/react";
+import { Button, Chip, Separator, Skeleton, toast } from "@heroui/react";
 import { routePaths } from "@/app/router/route-paths";
 import { useCurrentPlayer } from "@/shared/hooks/use-current-player";
 import { PlayerPip } from "@/shared/components/player-pip";
@@ -75,6 +75,10 @@ export function GamePage() {
       navState.publicState ?? null,
       navState.privateState ?? null,
     );
+
+  useEffect(() => {
+    if (error) toast.danger(error);
+  }, [error]);
 
   const [selectedHandIds, setSelectedHandIds] = useState<Set<string>>(new Set());
   const [selectedSubmissionId, setSelectedSubmissionId] = useState<string | null>(
@@ -194,16 +198,6 @@ export function GamePage() {
           </div>
         </div>
 
-        {error && (
-          <motion.p
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            role="alert"
-            className="mb-6 rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
-          >
-            {error}
-          </motion.p>
-        )}
 
         {publicState.phase !== "FINISHED" && (
           <>

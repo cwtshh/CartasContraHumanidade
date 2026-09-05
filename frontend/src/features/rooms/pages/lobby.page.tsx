@@ -11,7 +11,7 @@ import { roomsQueryKeys } from "../queries/rooms.query-keys";
 import { useRoomPresence } from "../hooks/use-room-presence";
 import { useLeaveRoom } from "../hooks/use-leave-room";
 import type { LobbyPlayer, Room } from "../types/rooms.types";
-import { Button } from "@heroui/react";
+import { Button, toast } from "@heroui/react";
 
 const DEFAULT_MAX_PLAYERS = 8;
 const DEFAULT_TARGET_SCORE = 7;
@@ -47,6 +47,10 @@ export function LobbyPage() {
     player,
     myRoomPlayerId,
   );
+
+  useEffect(() => {
+    if (gameChannel.error) toast.danger(gameChannel.error);
+  }, [gameChannel.error]);
 
   useEffect(() => {
     if (gameChannel.publicState && gameChannel.privateState) {
@@ -184,16 +188,6 @@ export function LobbyPage() {
           ))}
         </div>
 
-        {gameChannel.error && (
-          <motion.p
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            role="alert"
-            className="mb-4 rounded-xl bg-danger-soft px-3 py-2.5 text-sm font-medium text-danger-soft-foreground"
-          >
-            {gameChannel.error}
-          </motion.p>
-        )}
 
         {countdown !== null ? (
           <div className="flex flex-col items-center py-4 text-center">

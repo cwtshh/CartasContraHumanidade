@@ -73,7 +73,9 @@ public class GameService {
             throw new GameAlreadyStartedException();
         }
 
-        List<RoomPlayer> players = room.getPlayers();
+        List<RoomPlayer> players = room.getPlayers().stream()
+                .filter(RoomPlayer::getConnected)
+                .toList();
 
         if (players.size() < 3) {
             throw new NotEnoughPlayersException();
@@ -249,7 +251,9 @@ public class GameService {
 
         replenishHands(session);
 
-        List<RoomPlayer> players = room.getPlayers();
+        List<RoomPlayer> players = room.getPlayers().stream()
+                .filter(RoomPlayer::getConnected)
+                .toList();
         UUID nextCzarId = pickNextCzar(players, session.getCzarPlayerId());
         session.setCzarPlayerId(nextCzarId);
 

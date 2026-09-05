@@ -1,5 +1,7 @@
 package com.cwtsh.cartascontrahumanidadeapi.room.service;
 
+import com.cwtsh.cartascontrahumanidadeapi.game.domain.GameSession;
+import com.cwtsh.cartascontrahumanidadeapi.game.repository.GameSessionRepository;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.Room;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomPlayer;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomStatus;
@@ -33,18 +35,28 @@ public class RoomCleanupJob {
     private final RoomRepository roomRepository;
     private final RoomPlayerRepository roomPlayerRepository;
     private final RoomPlayerLifeCicleService roomPlayerLifecycleService;
+    private final GameSessionRepository gameSessionRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
     public RoomCleanupJob(
             RoomRepository roomRepository,
             RoomPlayerRepository roomPlayerRepository,
             RoomPlayerLifeCicleService roomPlayerLifecycleService,
+            GameSessionRepository gameSessionRepository,
             SimpMessagingTemplate messagingTemplate
     ) {
         this.roomRepository = roomRepository;
         this.roomPlayerRepository = roomPlayerRepository;
         this.roomPlayerLifecycleService = roomPlayerLifecycleService;
+        this.gameSessionRepository = gameSessionRepository;
         this.messagingTemplate = messagingTemplate;
+    }
+
+    private void deleteAssociatedSessions(List<Room> rooms) {
+        for (Room room : rooms) {
+            gameSessionRepository.findByRoomId(room.getId())
+                    .ifPresent(gameSessionRepository::delete);
+        }
     }
 
     @Scheduled(fixedRate = CHECK_INTERVAL_MS)
@@ -104,6 +116,7 @@ public class RoomCleanupJob {
             return;
         }
 
+        deleteAssociatedSessions(expiredRooms);
         roomRepository.deleteAll(expiredRooms);
 
         log.info("Removidas {} salas vazias há mais de {} minutos.",
@@ -126,6 +139,7 @@ public class RoomCleanupJob {
             return;
         }
 
+        deleteAssociatedSessions(staleRooms);
         roomRepository.deleteAll(staleRooms);
 
         log.info("Removidas {} salas em espera há mais de {} minutos sem iniciar.",
