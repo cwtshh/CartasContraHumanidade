@@ -1,1602 +1,2002 @@
 [
   {
     "id": 1,
-    "text": "O Dedinho do Lula."
+    "text": "O Dedinho do Lula.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 2,
-    "text": "Capozão de Fusca."
+    "text": "Capozão de Fusca.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 3,
-    "text": "O Bolsonaro."
+    "text": "O Bolsonaro.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 4,
-    "text": "O Prefeito."
+    "text": "O Prefeito.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 5,
-    "text": "Meu pai."
+    "text": "Meu pai.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 6,
-    "text": "Minha mãe."
+    "text": "Minha mãe.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 7,
-    "text": "Minha irmã."
+    "text": "Minha irmã.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 8,
-    "text": "Meu carro."
+    "text": "Meu carro.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 9,
-    "text": "Judeus."
+    "text": "Judeus.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 10,
-    "text": "Crentes."
+    "text": "Crentes.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 11,
-    "text": "Muçulmanos."
+    "text": "Muçulmanos.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 12,
-    "text": "Ateus."
+    "text": "Ateus.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 13,
-    "text": "Macumba da braba."
+    "text": "Macumba da braba.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 14,
-    "text": "Pacto com Satanás."
+    "text": "Pacto com Satanás.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 15,
-    "text": "Esquartejamento."
+    "text": "Esquartejamento.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 16,
-    "text": "Prolapso retal."
+    "text": "Prolapso retal.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 17,
-    "text": "Vibrador."
+    "text": "Vibrador.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 18,
-    "text": "Fome na África."
+    "text": "Fome na África.",
+    "categories": ["RACISMO", "XENOFOBIA"]
   },
   {
     "id": 19,
-    "text": "Erva de Gato."
+    "text": "Erva de Gato.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 20,
-    "text": "Catuaba."
+    "text": "Catuaba.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 21,
-    "text": "PC Siqueira."
+    "text": "PC Siqueira.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 22,
-    "text": "Only Fans."
+    "text": "Only Fans.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 23,
-    "text": "Comunismo."
+    "text": "Comunismo.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 24,
-    "text": "Nazismo."
+    "text": "Nazismo.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 25,
-    "text": "Cogumelos Alucinógenos."
+    "text": "Cogumelos Alucinógenos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 26,
-    "text": "Tráfico Humano."
+    "text": "Tráfico Humano.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 27,
-    "text": "Prostituição."
+    "text": "Prostituição.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 28,
-    "text": "Sugar Daddy."
+    "text": "Sugar Daddy.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 29,
-    "text": "Piroca."
+    "text": "Piroca.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 30,
-    "text": "Xavasca."
+    "text": "Xavasca.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 31,
-    "text": "Absorvente Interno."
+    "text": "Absorvente Interno.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 32,
-    "text": "Chuveirinho."
+    "text": "Chuveirinho.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 33,
-    "text": "Suicídio."
+    "text": "Suicídio.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 34,
-    "text": "Boderline."
+    "text": "Boderline.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 35,
-    "text": "Uma crise identitária."
+    "text": "Uma crise identitária.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 36,
-    "text": "Gugu."
+    "text": "Gugu.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 37,
-    "text": "Belle Bellinha."
+    "text": "Belle Bellinha.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 38,
-    "text": "Pipokinha."
+    "text": "Pipokinha.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 39,
-    "text": "Claudinha Leite."
+    "text": "Claudinha Leite.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 40,
-    "text": "Gusttavo Lima."
+    "text": "Gusttavo Lima.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 41,
-    "text": "Lavagem anal."
+    "text": "Lavagem anal.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 42,
-    "text": "Peido Vaginal."
+    "text": "Peido Vaginal.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 43,
-    "text": "Espermograma."
+    "text": "Espermograma.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 44,
-    "text": "Rivotril."
+    "text": "Rivotril.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 45,
-    "text": "Feminismo."
+    "text": "Feminismo.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 46,
-    "text": "Racismo."
+    "text": "Racismo.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 47,
-    "text": "Gays."
+    "text": "Gays.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 48,
-    "text": "Um carro capotando."
+    "text": "Um carro capotando.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 49,
-    "text": "Alcoolismo."
+    "text": "Alcoolismo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 50,
-    "text": "Maconha."
+    "text": "Maconha.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 51,
-    "text": "Galera da Atlética."
+    "text": "Galera da Atlética.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 52,
-    "text": "Mé."
+    "text": "Mé.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 53,
-    "text": "Faculdade."
+    "text": "Faculdade.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 54,
-    "text": "Meu chefe."
+    "text": "Meu chefe.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 55,
-    "text": "Meu primo."
+    "text": "Meu primo.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 56,
-    "text": "O Movimento EMO."
+    "text": "O Movimento EMO.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 57,
-    "text": "DST."
+    "text": "DST.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 58,
-    "text": "Meu emprego."
+    "text": "Meu emprego.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 59,
-    "text": "Meu Salário."
+    "text": "Meu Salário.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 60,
-    "text": "AIDS."
+    "text": "AIDS.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 61,
-    "text": "Nando Moura."
+    "text": "Nando Moura.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 62,
-    "text": "MST."
+    "text": "MST.",
+    "categories": ["POLITICA", "CLASSISMO"]
   },
   {
     "id": 63,
-    "text": "A banda Restart."
+    "text": "A banda Restart.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 64,
-    "text": "Fiuk."
+    "text": "Fiuk.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 65,
-    "text": "Um Mendigo."
+    "text": "Um Mendigo.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 66,
-    "text": "1 Tonelada de Crack."
+    "text": "1 Tonelada de Crack.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 67,
-    "text": "Uma paulada na cabeça."
+    "text": "Uma paulada na cabeça.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 68,
-    "text": "Esquizofrenia."
+    "text": "Esquizofrenia.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 69,
-    "text": "Uma mandioca."
+    "text": "Uma mandioca.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 70,
-    "text": "Restinho de comida no ralo da pia."
+    "text": "Restinho de comida no ralo da pia.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 71,
-    "text": "Piercing íntimo."
+    "text": "Piercing íntimo.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 72,
-    "text": "Lavagem de Dinheiro."
+    "text": "Lavagem de Dinheiro.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 73,
-    "text": "Brochadura."
+    "text": "Brochadura.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 74,
-    "text": "Jesus."
+    "text": "Jesus.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 75,
-    "text": "Prisão de Ventre."
+    "text": "Prisão de Ventre.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 76,
-    "text": "Purgante."
+    "text": "Purgante.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 77,
-    "text": "Hemorróida."
+    "text": "Hemorróida.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 78,
-    "text": "Fio Terra."
+    "text": "Fio Terra.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 79,
-    "text": "Uma drag queen."
+    "text": "Uma drag queen.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 80,
-    "text": "Uma mente bastante fértil."
+    "text": "Uma mente bastante fértil.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 81,
-    "text": "Anitta."
+    "text": "Anitta.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 82,
-    "text": "O Carro da Pamonha."
+    "text": "O Carro da Pamonha.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 83,
-    "text": "Sequelar."
+    "text": "Sequelar.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 84,
-    "text": "Dixit."
+    "text": "Dixit.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 85,
-    "text": "Câncer de Próstata."
+    "text": "Câncer de Próstata.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 86,
-    "text": "Terapia em Grupo."
+    "text": "Terapia em Grupo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 87,
-    "text": "Ovo de Codorna."
+    "text": "Ovo de Codorna.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 88,
-    "text": "Homens."
+    "text": "Homens.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 89,
-    "text": "Mulheres."
+    "text": "Mulheres.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 90,
-    "text": "Não-binários."
+    "text": "Não-binários.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 91,
-    "text": "Morrer."
+    "text": "Morrer.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 92,
-    "text": "Afogar o ganso."
+    "text": "Afogar o ganso.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 93,
-    "text": "Peidar na saída."
+    "text": "Peidar na saída.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 94,
-    "text": "Um peido."
+    "text": "Um peido.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 95,
-    "text": "Uma missa."
+    "text": "Uma missa.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 96,
-    "text": "Testemunha de Jeová."
+    "text": "Testemunha de Jeová.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 97,
-    "text": "Minha vó."
+    "text": "Minha vó.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 98,
-    "text": "Bad Trip."
+    "text": "Bad Trip.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 99,
-    "text": "Travestis."
+    "text": "Travestis.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 100,
-    "text": "Ser um macumbeiro."
+    "text": "Ser um macumbeiro.",
+    "categories": ["RELIGIAO", "RACISMO"]
   },
   {
     "id": 101,
-    "text": "A voz da Regina Rouca."
+    "text": "A voz da Regina Rouca.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 102,
-    "text": "Os peitos da Inês Brasil."
+    "text": "Os peitos da Inês Brasil.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 103,
-    "text": "Aumento Peniano Natural."
+    "text": "Aumento Peniano Natural.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 104,
-    "text": "Auto felação."
+    "text": "Auto felação.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 105,
-    "text": "Tempo pra mim."
+    "text": "Tempo pra mim.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 106,
-    "text": "Carne Humana."
+    "text": "Carne Humana.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 107,
-    "text": "O Apocalipse."
+    "text": "O Apocalipse.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 108,
-    "text": "O Clitóris."
+    "text": "O Clitóris.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 109,
-    "text": "Minha vida sexual."
+    "text": "Minha vida sexual.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 110,
-    "text": "Barriga Tanquinho."
+    "text": "Barriga Tanquinho.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 111,
-    "text": "Separar o Mar Vermelho."
+    "text": "Separar o Mar Vermelho.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 112,
-    "text": "Troca-troca."
+    "text": "Troca-troca.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 113,
-    "text": "Masculinidade Frágil."
+    "text": "Masculinidade Frágil.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 114,
-    "text": "E.T.s."
+    "text": "E.T.s.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 115,
-    "text": "Crianças Africanas."
+    "text": "Crianças Africanas.",
+    "categories": ["RACISMO", "XENOFOBIA"]
   },
   {
     "id": 116,
-    "text": "Um espermatozóide defeituoso."
+    "text": "Um espermatozóide defeituoso.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 117,
-    "text": "Camisinha Furada."
+    "text": "Camisinha Furada.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 118,
-    "text": "Summer EletroHits."
+    "text": "Summer EletroHits.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 119,
-    "text": "Vladimir Putin."
+    "text": "Vladimir Putin.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 120,
-    "text": "O Homem- formiga."
+    "text": "O Homem- formiga.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 121,
-    "text": "Um micro-pênis."
+    "text": "Um micro-pênis.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 122,
-    "text": "Minha alma."
+    "text": "Minha alma.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 123,
-    "text": "Indígenas."
+    "text": "Indígenas.",
+    "categories": ["RACISMO", "XENOFOBIA"]
   },
   {
     "id": 124,
-    "text": "Esperança."
+    "text": "Esperança.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 125,
-    "text": "Sua alteza real, Rainha Elizabeth."
+    "text": "Sua alteza real, Rainha Elizabeth.",
+    "categories": ["ETARISMO", "CLASSISMO"]
   },
   {
     "id": 126,
-    "text": "Marília Mendonça."
+    "text": "Marília Mendonça.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 127,
-    "text": "Chacina nas escolas."
+    "text": "Chacina nas escolas.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 128,
-    "text": "Minha vagina."
+    "text": "Minha vagina.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 129,
-    "text": "Fio-dental."
+    "text": "Fio-dental.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 130,
-    "text": "Baforar Loló."
+    "text": "Baforar Loló.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 131,
-    "text": "Pais mortos."
+    "text": "Pais mortos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 132,
-    "text": "Nazistas."
+    "text": "Nazistas.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 133,
-    "text": "Hentai de Os Simpsons."
+    "text": "Hentai de Os Simpsons.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 134,
-    "text": "Um feto."
+    "text": "Um feto.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 135,
-    "text": "Deus."
+    "text": "Deus.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 136,
-    "text": "Bebês mortos."
+    "text": "Bebês mortos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 137,
-    "text": "Fimose."
+    "text": "Fimose.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 138,
-    "text": "Comprar cigarro."
+    "text": "Comprar cigarro.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 139,
-    "text": "Barriga de Chopp."
+    "text": "Barriga de Chopp.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 140,
-    "text": "O cu da Anitta."
+    "text": "O cu da Anitta.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 141,
-    "text": "Nordestinos."
+    "text": "Nordestinos.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 142,
-    "text": "Paulistas."
+    "text": "Paulistas.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 143,
-    "text": "Goianos."
+    "text": "Goianos.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 144,
-    "text": "Sulistas."
+    "text": "Sulistas.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 145,
-    "text": "Oktoberfest."
+    "text": "Oktoberfest.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 146,
-    "text": "Kid Bengala."
+    "text": "Kid Bengala.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 147,
-    "text": "O pai do Chris."
+    "text": "O pai do Chris.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 148,
-    "text": "Viagra."
+    "text": "Viagra.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 149,
-    "text": "Ficar de Perna Bamba."
+    "text": "Ficar de Perna Bamba.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 150,
-    "text": "Inteligência Articial."
+    "text": "Inteligência Articial.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 151,
-    "text": "Caos Climático."
+    "text": "Caos Climático.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 152,
-    "text": "Adoção."
+    "text": "Adoção.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 153,
-    "text": "El Niño."
+    "text": "El Niño.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 154,
-    "text": "Pabllo Vittar."
+    "text": "Pabllo Vittar.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 155,
-    "text": "Raul Seixas."
+    "text": "Raul Seixas.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 156,
-    "text": "Jojo Toddynho."
+    "text": "Jojo Toddynho.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 157,
-    "text": "Toddynho."
+    "text": "Toddynho.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 158,
-    "text": "Reparação Histórica."
+    "text": "Reparação Histórica.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 159,
-    "text": "Tráfico de Órgãos."
+    "text": "Tráfico de Órgãos.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 160,
-    "text": "Vender o rim."
+    "text": "Vender o rim.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 161,
-    "text": "Meu Professor de Matemática."
+    "text": "Meu Professor de Matemática.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 162,
-    "text": "Fazer aquilo na bunda."
+    "text": "Fazer aquilo na bunda.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 163,
-    "text": "Cotas raciais."
+    "text": "Cotas raciais.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 164,
-    "text": "Carne de papelão."
+    "text": "Carne de papelão.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 165,
-    "text": "Um pelo pubiano."
+    "text": "Um pelo pubiano.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 166,
-    "text": "Coito interrompido."
+    "text": "Coito interrompido.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 167,
-    "text": "Maomé. (Louvado seja o seu nome!)"
+    "text": "Maomé. (Louvado seja o seu nome!)",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 168,
-    "text": "Domingão do Faustão."
+    "text": "Domingão do Faustão.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 169,
-    "text": "Sexo surpresa!"
+    "text": "Sexo surpresa!",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 170,
-    "text": "X-Tudão."
+    "text": "X-Tudão.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 171,
-    "text": "Abuso infantil."
+    "text": "Abuso infantil.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 172,
-    "text": "Facadas múltiplas."
+    "text": "Facadas múltiplas.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 173,
-    "text": "Mastrubação."
+    "text": "Mastrubação.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 174,
-    "text": "Lençóis infectados com Corona Vírus."
+    "text": "Lençóis infectados com Corona Vírus.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 175,
-    "text": "COVID-19."
+    "text": "COVID-19.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 176,
-    "text": "A perna de Roberto Carlos."
+    "text": "A perna de Roberto Carlos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 177,
-    "text": "Michael Jackson."
+    "text": "Michael Jackson.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 178,
-    "text": "Melhoramentos Cibernéticos."
+    "text": "Melhoramentos Cibernéticos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 179,
-    "text": "Clareamento Anal."
+    "text": "Clareamento Anal.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 180,
-    "text": "Cálculo Renal."
+    "text": "Cálculo Renal.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 181,
-    "text": "Não dar a mínima para mendigos."
+    "text": "Não dar a mínima para mendigos.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 182,
-    "text": "Sexting."
+    "text": "Sexting.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 183,
-    "text": "Um policial armado."
+    "text": "Um policial armado.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 184,
-    "text": "Períneo."
+    "text": "Períneo.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 185,
-    "text": "Polegares opositores."
+    "text": "Polegares opositores.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 186,
-    "text": "Policiais Racistas."
+    "text": "Policiais Racistas.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 187,
-    "text": "Conversar potoca."
+    "text": "Conversar potoca.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 188,
-    "text": "Mecetando."
+    "text": "Mecetando.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 189,
-    "text": "Ficar de perna bamba."
+    "text": "Ficar de perna bamba.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 190,
-    "text": "Música Gospel."
+    "text": "Música Gospel.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 191,
-    "text": "Cheirar Cola."
+    "text": "Cheirar Cola.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 192,
-    "text": "Explosões."
+    "text": "Explosões.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 193,
-    "text": "Guerra Nuclear."
+    "text": "Guerra Nuclear.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 194,
-    "text": "Boa noite, Cinderela."
+    "text": "Boa noite, Cinderela.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 195,
-    "text": "Caras que não telefonam no dia seguinte."
+    "text": "Caras que não telefonam no dia seguinte.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 196,
-    "text": "Coquete."
+    "text": "Coquete.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 197,
-    "text": "Estrogênio."
+    "text": "Estrogênio.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 198,
-    "text": "Impressão 3D."
+    "text": "Impressão 3D.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 199,
-    "text": "Designer Gráfico."
+    "text": "Designer Gráfico.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 200,
-    "text": "O criador deste jogo."
+    "text": "O criador deste jogo.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 201,
-    "text": "Aquele negócio que eletrocuta o abdomen."
+    "text": "Aquele negócio que eletrocuta o abdomen.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 202,
-    "text": "Indisgestão de Torresmo."
+    "text": "Indisgestão de Torresmo.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 203,
-    "text": "Avacuação dolorosa."
+    "text": "Avacuação dolorosa.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 204,
-    "text": "Estrogênio."
+    "text": "Estrogênio.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 205,
-    "text": "O verdadeiro significado do Natal."
+    "text": "O verdadeiro significado do Natal.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 206,
-    "text": "Cálculo Renal."
+    "text": "Cálculo Renal.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 207,
-    "text": "Órfãos."
+    "text": "Órfãos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 208,
-    "text": "Daddy Issues."
+    "text": "Daddy Issues.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 209,
-    "text": "Retardados."
+    "text": "Retardados.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 210,
-    "text": "Vadias."
+    "text": "Vadias.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 211,
-    "text": "NeoNazistas."
+    "text": "NeoNazistas.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 212,
-    "text": "ANCAPs."
+    "text": "ANCAPs.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 213,
-    "text": "Botox."
+    "text": "Botox.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 214,
-    "text": "Lipo de Papada."
+    "text": "Lipo de Papada.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 215,
-    "text": "Uma lipo."
+    "text": "Uma lipo.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 216,
-    "text": "Redução de Estômago."
+    "text": "Redução de Estômago.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 217,
-    "text": "Rinoplastia."
+    "text": "Rinoplastia.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 218,
-    "text": "Amputar o dedo."
+    "text": "Amputar o dedo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 219,
-    "text": "Pintar as unhas."
+    "text": "Pintar as unhas.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 220,
-    "text": "Branco de Dread."
+    "text": "Branco de Dread.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 221,
-    "text": "Consultores."
+    "text": "Consultores.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 222,
-    "text": "Ator pornô."
+    "text": "Ator pornô.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 223,
-    "text": "Gatos."
+    "text": "Gatos.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 224,
-    "text": "Cachorros."
+    "text": "Cachorros.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 225,
-    "text": "Papagaio."
+    "text": "Papagaio.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 226,
-    "text": "Coca-cola."
+    "text": "Coca-cola.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 227,
-    "text": "Páscoa."
+    "text": "Páscoa.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 228,
-    "text": "50 Tons de Cinza."
+    "text": "50 Tons de Cinza.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 229,
-    "text": "O Auto da Compadecida."
+    "text": "O Auto da Compadecida.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 230,
-    "text": "Cristo Redentor."
+    "text": "Cristo Redentor.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 231,
-    "text": "Rato de Isqueiro."
+    "text": "Rato de Isqueiro.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 232,
-    "text": "Carnaval."
+    "text": "Carnaval.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 233,
-    "text": "Kama Sutra."
+    "text": "Kama Sutra.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 234,
-    "text": "Capitalismo."
+    "text": "Capitalismo.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 235,
-    "text": "Pelo Encravado."
+    "text": "Pelo Encravado.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 236,
-    "text": "Gonorréia."
+    "text": "Gonorréia.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 237,
-    "text": "Sífilis."
+    "text": "Sífilis.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 238,
-    "text": "PREP."
+    "text": "PREP.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 239,
-    "text": "Unicórnio."
+    "text": "Unicórnio.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 240,
-    "text": "King Kong."
+    "text": "King Kong.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 241,
-    "text": "Sexta-Feira 13."
+    "text": "Sexta-Feira 13.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 242,
-    "text": "Jogo do Bicho."
+    "text": "Jogo do Bicho.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 243,
-    "text": "Um Kibovo."
+    "text": "Um Kibovo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 244,
-    "text": "Derby."
+    "text": "Derby.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 245,
-    "text": "Chimichurri."
+    "text": "Chimichurri.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 246,
-    "text": "Transtorno Alimentar."
+    "text": "Transtorno Alimentar.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 247,
-    "text": "Velas Aromáticas."
+    "text": "Velas Aromáticas.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 248,
-    "text": "Tribal."
+    "text": "Tribal.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 249,
-    "text": "Esse jogo."
+    "text": "Esse jogo.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 250,
-    "text": "Oloares."
+    "text": "Oloares.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 251,
-    "text": "Batista Pereira."
+    "text": "Batista Pereira.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 252,
-    "text": "Eliana."
+    "text": "Eliana.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 253,
-    "text": "Espada de São Jorge."
+    "text": "Espada de São Jorge.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 254,
-    "text": "Game of Thrones."
+    "text": "Game of Thrones.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 255,
-    "text": "C.S.I."
+    "text": "C.S.I.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 256,
-    "text": "F.B.I."
+    "text": "F.B.I.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 257,
-    "text": "Guarda Civil Metropolitana."
+    "text": "Guarda Civil Metropolitana.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 258,
-    "text": "ROTAM."
+    "text": "ROTAM.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 259,
-    "text": "Lázaro Barbosa."
+    "text": "Lázaro Barbosa.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 260,
-    "text": "Serial Killer de Goiânia."
+    "text": "Serial Killer de Goiânia.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 261,
-    "text": "Costura do Saco."
+    "text": "Costura do Saco.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 262,
-    "text": "Incenso."
+    "text": "Incenso.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 263,
-    "text": "Estabilizador."
+    "text": "Estabilizador.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 264,
-    "text": "Rede Record."
+    "text": "Rede Record.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 265,
-    "text": "Karol Conká."
+    "text": "Karol Conká.",
+    "categories": ["RACISMO", "MACHISMO"]
   },
   {
     "id": 266,
-    "text": "Big Brother Brasil."
+    "text": "Big Brother Brasil.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 267,
-    "text": "Cafeína."
+    "text": "Cafeína.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 268,
-    "text": "Um grupo de metaleiros."
+    "text": "Um grupo de metaleiros.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 269,
-    "text": "Maconheiros."
+    "text": "Maconheiros.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 270,
-    "text": "Pablo Marçal."
+    "text": "Pablo Marçal.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 271,
-    "text": "Coaching."
+    "text": "Coaching.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 272,
-    "text": "Virgínia e Zé Felipe."
+    "text": "Virgínia e Zé Felipe.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 273,
-    "text": "Rupaul."
+    "text": "Rupaul.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 274,
-    "text": "Irmão do Jorel."
+    "text": "Irmão do Jorel.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 275,
-    "text": "Jogo do Tigrinho."
+    "text": "Jogo do Tigrinho.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 276,
-    "text": "Blaze."
+    "text": "Blaze.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 277,
-    "text": "Brazino, o jogo da gelera."
+    "text": "Brazino, o jogo da gelera.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 278,
-    "text": "Bíblia."
+    "text": "Bíblia.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 279,
-    "text": "Flanelinha."
+    "text": "Flanelinha.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 280,
-    "text": "Cigarro Eletrônico."
+    "text": "Cigarro Eletrônico.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 281,
-    "text": "K9."
+    "text": "K9.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 282,
-    "text": "Jiraya Uai."
+    "text": "Jiraya Uai.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 283,
-    "text": "Dentro da Hilux."
+    "text": "Dentro da Hilux.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 284,
-    "text": "Anestésicos."
+    "text": "Anestésicos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 285,
-    "text": "Panela Antiaderente."
+    "text": "Panela Antiaderente.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 286,
-    "text": "Água Oxigenada."
+    "text": "Água Oxigenada.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 287,
-    "text": "Água Sanitária."
+    "text": "Água Sanitária.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 288,
-    "text": "Homens de unha pintada."
+    "text": "Homens de unha pintada.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 289,
-    "text": "Xamuel."
+    "text": "Xamuel.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 290,
-    "text": "Padrão."
+    "text": "Padrão.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 291,
-    "text": "72 virgens."
+    "text": "72 virgens.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 292,
-    "text": "Transmutação Corpórea."
+    "text": "Transmutação Corpórea.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 293,
-    "text": "Césio 137."
+    "text": "Césio 137.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 294,
-    "text": "Zé latinhas."
+    "text": "Zé latinhas.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 295,
-    "text": "Estuprar e Saquear."
+    "text": "Estuprar e Saquear.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 296,
-    "text": "Um paradoxo de viagem no tempo."
+    "text": "Um paradoxo de viagem no tempo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 297,
-    "text": "Nudez frontal."
+    "text": "Nudez frontal.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 298,
-    "text": "Pagar mico em público."
+    "text": "Pagar mico em público.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 299,
-    "text": "Pôr um ovo."
+    "text": "Pôr um ovo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 300,
-    "text": "O privilégio de ser branco."
+    "text": "O privilégio de ser branco.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 301,
-    "text": "Taylor Swift."
+    "text": "Taylor Swift.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 302,
-    "text": "Meleca de nariz."
+    "text": "Meleca de nariz.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 303,
-    "text": "Desodorante."
+    "text": "Desodorante.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 304,
-    "text": "O sangue de Cristo."
+    "text": "O sangue de Cristo.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 305,
-    "text": "Agricultura."
+    "text": "Agricultura.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 306,
-    "text": "Horríveis acidentes causados por depilação a laser."
+    "text": "Horríveis acidentes causados por depilação a laser.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 307,
-    "text": "Monstro horríveis."
+    "text": "Monstro horríveis.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 308,
-    "text": "Aborto clandestino."
+    "text": "Aborto clandestino.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 309,
-    "text": "Cobiças a mulher do próximo."
+    "text": "Cobiças a mulher do próximo.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 310,
-    "text": "Obesidade."
+    "text": "Obesidade.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 311,
-    "text": "Tétano."
+    "text": "Tétano.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 312,
-    "text": "Futebol."
+    "text": "Futebol.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 313,
-    "text": "Vôlei de praia."
+    "text": "Vôlei de praia.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 314,
-    "text": "Pastelaria Obrigado Jesus."
+    "text": "Pastelaria Obrigado Jesus.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 315,
-    "text": "Exibição para fins de acasalamento."
+    "text": "Exibição para fins de acasalamento.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 316,
-    "text": "Misto Quente,"
+    "text": "Misto Quente,",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 317,
-    "text": "Kanye West."
+    "text": "Kanye West.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 318,
-    "text": "Feijoada."
+    "text": "Feijoada.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 319,
-    "text": "Pequi."
+    "text": "Pequi.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 320,
-    "text": "Arroz Carreteiro."
+    "text": "Arroz Carreteiro.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 321,
-    "text": "Crianças na coleira."
+    "text": "Crianças na coleira.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 322,
-    "text": "Preliminares meia boca."
+    "text": "Preliminares meia boca.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 323,
-    "text": "Áudio 2x no Whatsapp."
+    "text": "Áudio 2x no Whatsapp.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 324,
-    "text": "Minha genitália."
+    "text": "Minha genitália.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 325,
-    "text": "Trabalhar na Oi."
+    "text": "Trabalhar na Oi.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 326,
-    "text": "Buda."
+    "text": "Buda.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 327,
-    "text": "Café da manhã."
+    "text": "Café da manhã.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 328,
-    "text": "Faculdades historicamente mais frequentadas por negros."
+    "text": "Faculdades historicamente mais frequentadas por negros.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 329,
-    "text": "Depender do SUS."
+    "text": "Depender do SUS.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 330,
-    "text": "Uma carícia suave na parte interna da coxa."
+    "text": "Uma carícia suave na parte interna da coxa.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 331,
-    "text": "Doce, doce vingança."
+    "text": "Doce, doce vingança.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 332,
-    "text": "Liberais."
+    "text": "Liberais.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 333,
-    "text": "Recionários."
+    "text": "Recionários.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 334,
-    "text": "Pacote Adobe."
+    "text": "Pacote Adobe.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 335,
-    "text": "Pacote Office."
+    "text": "Pacote Office.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 336,
-    "text": "Esqueleto."
+    "text": "Esqueleto.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 337,
-    "text": "Comer barata."
+    "text": "Comer barata.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 338,
-    "text": "Coroinhas."
+    "text": "Coroinhas.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 339,
-    "text": "Um venezuelano."
+    "text": "Um venezuelano.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 340,
-    "text": "Amostras Grátis."
+    "text": "Amostras Grátis.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 341,
-    "text": "Fazer a coisa certa."
+    "text": "Fazer a coisa certa.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 342,
-    "text": "Troca de casal."
+    "text": "Troca de casal.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 343,
-    "text": "Paz mundial."
+    "text": "Paz mundial.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 344,
-    "text": "Puberdade."
+    "text": "Puberdade.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 345,
-    "text": "Fantasmas."
+    "text": "Fantasmas.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 346,
-    "text": "Mediunidade."
+    "text": "Mediunidade.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 347,
-    "text": "Laranjinha."
+    "text": "Laranjinha.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 348,
-    "text": "Brutalidade Policial."
+    "text": "Brutalidade Policial.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 349,
-    "text": "Twitter."
+    "text": "Twitter.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 350,
-    "text": "Elon Musk."
+    "text": "Elon Musk.",
+    "categories": ["POLITICA"]
   },
   {
     "id": 351,
-    "text": "Tik Tok."
+    "text": "Tik Tok.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 352,
-    "text": "Fazer uma dancinha de Tik Tok."
+    "text": "Fazer uma dancinha de Tik Tok.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 353,
-    "text": "Vestir-se de modo a exibir a lateral dos seios com elegância."
+    "text": "Vestir-se de modo a exibir a lateral dos seios com elegância.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 354,
-    "text": "Incesto."
+    "text": "Incesto.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 355,
-    "text": "Esperar um arroto e acabar vomitando no chão."
+    "text": "Esperar um arroto e acabar vomitando no chão.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 356,
-    "text": "Beijar depois de ter vomitado."
+    "text": "Beijar depois de ter vomitado.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 357,
-    "text": "Lobotomia."
+    "text": "Lobotomia.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 358,
-    "text": "Lamber coisas para estabelecer que são propriedade sua."
+    "text": "Lamber coisas para estabelecer que são propriedade sua.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 359,
-    "text": "Cerveja quente."
+    "text": "Cerveja quente.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 360,
-    "text": "Cheio de pessoa velha."
+    "text": "Cheio de pessoa velha.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 361,
-    "text": "Comer a placenta."
+    "text": "Comer a placenta.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 362,
-    "text": "Pistola d’água cheia de urina de gato."
+    "text": "Pistola d’água cheia de urina de gato.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 363,
-    "text": "Um cavalo minúsculo."
+    "text": "Um cavalo minúsculo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 364,
-    "text": "A cena Undergound de Goiânia."
+    "text": "A cena Undergound de Goiânia.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 365,
-    "text": "Batalha de rap."
+    "text": "Batalha de rap.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 366,
-    "text": "Ratinho."
+    "text": "Ratinho.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 367,
-    "text": "Pedófilos."
+    "text": "Pedófilos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 368,
-    "text": "Fungos."
+    "text": "Fungos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 369,
-    "text": "Funk proibidão."
+    "text": "Funk proibidão.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 370,
-    "text": "Automotivo."
+    "text": "Automotivo.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 371,
-    "text": "Catapultas."
+    "text": "Catapultas.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 372,
-    "text": "Pobres."
+    "text": "Pobres.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 373,
-    "text": "Ricos."
+    "text": "Ricos.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 374,
-    "text": "Limpar a bunda dela."
+    "text": "Limpar a bunda dela.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 375,
-    "text": "Ver minha vó pelada."
+    "text": "Ver minha vó pelada.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 376,
-    "text": "Cientologia."
+    "text": "Cientologia.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 377,
-    "text": "Placebo."
+    "text": "Placebo.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 378,
-    "text": "Saúde Total."
+    "text": "Saúde Total.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 379,
-    "text": "Fumantes."
+    "text": "Fumantes.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 380,
-    "text": "A Ku Klux Klan."
+    "text": "A Ku Klux Klan.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 381,
-    "text": "Cura gay."
+    "text": "Cura gay.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 382,
-    "text": "Um exorcismo."
+    "text": "Um exorcismo.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 383,
-    "text": "Pagar os pecados."
+    "text": "Pagar os pecados.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 384,
-    "text": "Um fidget spinner."
+    "text": "Um fidget spinner.",
+    "categories": ["ETARISMO"]
   },
   {
     "id": 385,
-    "text": "2 girls and 1 cup."
+    "text": "2 girls and 1 cup.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 386,
-    "text": "Mamilos protuberantes."
+    "text": "Mamilos protuberantes.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 387,
-    "text": "Limpeza étnica."
+    "text": "Limpeza étnica.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 388,
-    "text": "Amigo secreto da firma."
+    "text": "Amigo secreto da firma.",
+    "categories": ["CLASSISMO"]
   },
   {
     "id": 389,
-    "text": "O Papa."
+    "text": "O Papa.",
+    "categories": ["RELIGIAO"]
   },
   {
     "id": 390,
-    "text": "Pornografia envolvendo tentáculos."
+    "text": "Pornografia envolvendo tentáculos.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 391,
-    "text": "Holocausto."
+    "text": "Holocausto.",
+    "categories": ["RACISMO", "RELIGIAO"]
   },
   {
     "id": 392,
-    "text": "Minhas curvas."
+    "text": "Minhas curvas.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 393,
-    "text": "Black Eyed Peas."
+    "text": "Black Eyed Peas.",
+    "categories": ["RACISMO"]
   },
   {
     "id": 394,
-    "text": "Alcione."
+    "text": "Alcione.",
+    "categories": ["RACISMO", "MACHISMO"]
   },
   {
     "id": 395,
-    "text": "Pensamentos intrusivos."
+    "text": "Pensamentos intrusivos.",
+    "categories": ["CAPACITISMO"]
   },
   {
     "id": 396,
-    "text": "Larica."
+    "text": "Larica.",
+    "categories": ["GORDOFOBIA"]
   },
   {
     "id": 397,
-    "text": "Hino Nacional."
+    "text": "Hino Nacional.",
+    "categories": ["XENOFOBIA"]
   },
   {
     "id": 398,
-    "text": "Dormir de conchinha."
+    "text": "Dormir de conchinha.",
+    "categories": ["HOMOFOBIA"]
   },
   {
     "id": 399,
-    "text": "Não-monogamia."
+    "text": "Não-monogamia.",
+    "categories": ["MACHISMO"]
   },
   {
     "id": 400,
-    "text": "Se casar, ter 2 filhos, se mudar para Brasília e morrer."
+    "text": "Se casar, ter 2 filhos, se mudar para Brasília e morrer.",
+    "categories": ["MACHISMO", "CLASSISMO"]
   }
 ]

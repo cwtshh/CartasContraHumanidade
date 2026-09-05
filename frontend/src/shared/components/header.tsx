@@ -60,7 +60,11 @@ export function Header() {
             </div>
           </DropdownTrigger>
           <DropdownPopover>
-            <DropdownMenu>
+            <DropdownMenu
+              onAction={(key) => {
+                if (key === "profile") navigate(routePaths.profile);
+              }}
+            >
               {!player.isGuest && (
                 <>
                   <DropdownItem id="profile">Perfil</DropdownItem>

@@ -4,4 +4,5 @@ export const routePaths = {
   signUp: "/sign-up",
   room: (code: string) => `/rooms/${code}`,
   game: (id: string) => `/game/${id}`,
+  profile: "/profile",
 } as const;

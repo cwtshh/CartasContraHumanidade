@@ -19,7 +19,9 @@ import com.cwtsh.cartascontrahumanidadeapi.room.domain.Room;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomPlayer;
 import com.cwtsh.cartascontrahumanidadeapi.room.domain.RoomStatus;
 import com.cwtsh.cartascontrahumanidadeapi.room.exceptions.RoomNotFoundException;
+import com.cwtsh.cartascontrahumanidadeapi.room.repository.RoomPlayerRepository;
 import com.cwtsh.cartascontrahumanidadeapi.room.repository.RoomRepository;
+import com.cwtsh.cartascontrahumanidadeapi.stats.service.PrejudiceStatsService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,8 @@ public class GameService {
     private final RoundSubmissionRepository roundSubmissionRepository;
     private final WhiteCardRepository whiteCardRepository;
     private final BlackCardRepository blackCardRepository;
+    private final RoomPlayerRepository roomPlayerRepository;
+    private final PrejudiceStatsService prejudiceStatsService;
 
     public GameService(
             RoomRepository roomRepository,
@@ -43,7 +47,9 @@ public class GameService {
             GamePlayerHandRepository gamePlayerHandRepository,
             RoundSubmissionRepository roundSubmissionRepository,
             WhiteCardRepository whiteCardRepository,
-            BlackCardRepository blackCardRepository
+            BlackCardRepository blackCardRepository,
+            RoomPlayerRepository roomPlayerRepository,
+            PrejudiceStatsService prejudiceStatsService
     ) {
         this.roomRepository = roomRepository;
         this.gameSessionRepository = gameSessionRepository;
@@ -51,6 +57,8 @@ public class GameService {
         this.roundSubmissionRepository = roundSubmissionRepository;
         this.whiteCardRepository = whiteCardRepository;
         this.blackCardRepository = blackCardRepository;
+        this.roomPlayerRepository = roomPlayerRepository;
+        this.prejudiceStatsService = prejudiceStatsService;
     }
 
     @Transactional
@@ -167,6 +175,8 @@ public class GameService {
 
         hand.removeCards(cardIds);
 
+        recordPrejudiceStats(playerId, cardIds);
+
         long expectedSubmissions = session.getHands().size() - 1;
         long actualSubmissions = session.getSubmissions().size();
 
@@ -254,6 +264,17 @@ public class GameService {
         GameSession saved = gameSessionRepository.save(session);
 
         return buildActionResult(saved);
+    }
+
+    private void recordPrejudiceStats(UUID roomPlayerId, List<UUID> submittedCardIds) {
+        RoomPlayer player = roomPlayerRepository.findById(roomPlayerId).orElse(null);
+
+        if (player == null || player.isGuest()) {
+            return;
+        }
+
+        List<WhiteCard> submittedCards = whiteCardRepository.findAllById(submittedCardIds);
+        prejudiceStatsService.recordSubmission(player.getUser().getId(), submittedCards);
     }
 
     private GameActionResult buildActionResult(GameSession session) {

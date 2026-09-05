@@ -39,6 +39,16 @@ INSERT_WHITE_SQL = """
     ON CONFLICT (source_id) DO UPDATE
         SET text = EXCLUDED.text,
             updated_at = now()
+    RETURNING id
+"""
+
+DELETE_WHITE_CATEGORIES_SQL = """
+    DELETE FROM white_card_categories WHERE white_card_id = %s
+"""
+
+INSERT_WHITE_CATEGORY_SQL = """
+    INSERT INTO white_card_categories (white_card_id, category)
+    VALUES (%s, %s)
 """
 
 INSERT_BLACK_SQL = """
@@ -59,6 +69,11 @@ def load_cards(path):
 def seed_white_cards(cur, cards):
     for card in cards:
         cur.execute(INSERT_WHITE_SQL, (str(uuid.uuid4()), card["id"], card["text"]))
+        white_card_id = cur.fetchone()[0]
+
+        cur.execute(DELETE_WHITE_CATEGORIES_SQL, (white_card_id,))
+        for category in card.get("categories", []):
+            cur.execute(INSERT_WHITE_CATEGORY_SQL, (white_card_id, category))
     return len(cards)
 
 
